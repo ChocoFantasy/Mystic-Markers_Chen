@@ -1,0 +1,145 @@
+@charset "UTF-8";
+/* 第一行一定要是這個 */
+
+/* 重置所有標籤的樣式 */
+* {
+    /* 設定忽略 padding + border(包含進去) */
+    box-sizing: border-box;
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    /* 100%=16px */
+}
+
+/* 重置字體 */
+body {
+    font-family: sans-serif;
+    /* 系統預設的無襯線字 */
+    font-size: 100%;
+    line-height: 1.5;
+    /* 行高 */
+}
+
+/* 重置標題字重 */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+    /* 一般粗細 */
+}
+
+/* 重置清單符號 */
+ul,
+ol {
+    list-style: none;
+}
+
+/* 重置圖片 */
+img {
+    display: block;
+    width: 100%;
+    /* 滿版 */
+    max-width: 100%;
+    /*不一定要寫*/
+    height: auto;
+    /*不一定要寫*/
+}
+
+/* 重置連接 */
+a {
+    display: block;
+    /* 將 a 都變成 block(區塊) 才能設定某區塊範圍都有 a 連結可以按*/
+    /* 預設是 inline 改成 block。才能設定間距以及寬高 */
+    /* 除非有文字需求才會用原本預設 inline */
+    text-decoration: none;
+    /*底線拿掉*/
+    color: #333;
+    /* 基本超連結顏色 */
+}
