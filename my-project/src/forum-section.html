@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horror Forum Section</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500&family=Pirata+One&family=Inter:wght@500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --Primary-Green: #acff6c;
+            --Neutral-grey: #b3b3b3;
+            --Neutral-Black: #2a2a2a;
+            --Neutral-White: #fff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--Neutral-Black);
+            color: var(--Neutral-White);
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+        .forum-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .forum-layout {
+            display: flex;
+            gap: 20px;
+        }
+
+        .sidebar {
+            width: 18%;
+        }
+
+        .sidebar-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .category-board {
+            border: 1.5px solid var(--Neutral-grey);
+            border-radius: 5px;
+            padding: 20px;
+        }
+
+        .category-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .category-item {
+            padding: 10px;
+            margin: 5px 0;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .category-item:hover {
+            color: var(--Primary-Green);
+        }
+
+        .category-item.active {
+            color: var(--Primary-Green);
+            background-color: rgba(181, 149, 255, 0.1);
+            border-radius: 3px;
+        }
+
+        .ad-section {
+            aspect-ratio: 1/2;
+            background-color: #784a4e;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main-content {
+            width: 82%;
+            border: 1.5px solid var(--Neutral-grey);
+            border-radius: 5px;
+            padding: 20px;
+        }
+
+        .top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-button {
+            color: var(--Primary-Green);
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 18px;
+            letter-spacing: 2.7px;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            border: 1.5px solid var(--Primary-Green);
+            border-radius: 5px;
+            padding: 5px 10px;
+            width: 300px;
+        }
+
+        .search-input {
+            border: none;
+            background: none;
+            color: var(--Neutral-White);
+            width: 100%;
+            padding: 5px;
+        }
+
+        .search-input::placeholder {
+            color: var(--Neutral-grey);
+        }
+
+        .article-list {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .article-card {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            border-bottom: 1px solid var(--Neutral-grey);
+        }
+
+        .article-content {
+            flex: 1;
+        }
+
+        .article-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .author-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+        }
+
+        .article-title {
+            color: var(--Primary-Green);
+            font-size: 20px;
+            margin: 10px 0;
+        }
+
+        .article-preview {
+            color: var(--Neutral-grey);
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .interaction-bar {
+            display: flex;
+            gap: 20px;
+        }
+
+        .interaction-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--Neutral-White);
+        }
+
+        .article-image {
+            width: 82px;
+            height: 82px;
+            border-radius: 5px;
+            object-fit: cover;
+        }
+
+        @media (max-width: 991px) {
+            .forum-layout {
+                flex-direction: column;
+            }
+
+            .sidebar,
+            .main-content {
+                width: 100%;
+            }
+
+            .search-bar {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .article-card {
+                flex-direction: column;
+            }
+
+            .article-image {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 分類欄位 + 文章欄位 -->
+    <div class="forum-container">
+        <!-- 外框架 -->
+        <div class="forum-layout">
+            <!-- 分類欄位 -->
+            <aside class="sidebar">
+                <div class="sidebar-content">
+                    <nav class="category-board">
+                        <ul class="category-list" role="list">
+                            <li class="category-item active" role="listitem">所有看板</li>
+                            <li class="category-item" role="listitem">都市傳說</li>
+                            <li class="category-item" role="listitem">廢墟探險</li>
+                            <li class="category-item" role="listitem">恐怖獵奇</li>
+                            <li class="category-item" role="listitem">恐怖作品</li>
+                            <li class="category-item" role="listitem">驅邪收驚</li>
+                            <li class="category-item" role="listitem">我的收藏</li>
+                        </ul>
+                    </nav>
+                    <div class="ad-section" role="complementary" aria-label="廣告區域">
+                        <span class="ad-text">HORROR</span>
+                    </div>
+                </div>
+            </aside>
+            <!-- 發文欄位 -->
+            <main class="main-content">
+                <div class="top-bar">
+                    <div class="nav-buttons">
+                        <div><img src="../public/images/LOGO.png" alt="HIT" class=""><button class="nav-button" type="button">熱門</button></div>
+                        <div><img src="../public/images/LOGO.png" alt="NEWS" class=""><button class="nav-button" type="button">最新</button></div>
+                        <div><img src="../public/images/LOGO.png" alt="RULE" class=""> <button class="nav-button" type="button">發文規則</button></div>                      
+                    </div>
+                    <div class="search-bar" role="search">
+                        <input type="search" class="search-input" placeholder="搜尋 民雄鬼屋" aria-label="搜尋文章">
+                        <button type="button" aria-label="搜尋">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--Primary-Green)">
+                                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="article-list">
+                    <!-- Article cards would be repeated here with actual content -->
+                    <article class="article-card">
+                        <div class="article-content">
+                            <div class="article-header">
+                                <div class="author-info">
+                                    <img src="path-to-avatar.jpg" alt="" class="author-avatar">
+                                    <span class="author-name">模糊獵人</span>
+                                </div>
+                                <button type="button" aria-label="更多選項">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--Neutral-White)">
+                                        <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <h2 class="article-title">親身經歷！那晚在荒廢的工廠聽見奇怪的低語聲</h2>
+                            <p class="article-preview">第一次發文，想跟大家分享我上週在嘉義一間廢棄工廠探險的恐怖經歷...</p>
+                            <div class="interaction-bar">
+                                <div class="interaction-item">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--Neutral-White)">
+                                        <path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/>
+                                    </svg>
+                                    <span>1502</span>
+                                </div>
+                                <div class="interaction-item">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--Neutral-White)">
+                                        <path d="M21 6h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1zm-4 6V3c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1z"/>
+                                    </svg>
+                                    <span>465</span>
+                                </div>
+                                <div class="interaction-item">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--Neutral-White)">
+                                        <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2z"/>
+                                    </svg>
+                                    <span>600</span>
+                                </div>
+                            </div>
+                        </div>
+                        <img src="path-to-article-image.jpg" alt="" class="article-image">
+                    </article>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+</html>
