@@ -102,6 +102,7 @@ body {
     font-size: 100%;
     line-height: 1.5;
     /* 行高 */
+    background-color: #333;
 }
 
 /* 重置標題字重 */
@@ -140,7 +141,291 @@ a {
     /* 除非有文字需求才會用原本預設 inline */
     text-decoration: none;
     /*底線拿掉*/
-    color: #333;
+    color: white;
     /* 基本超連結顏色 */
 }
+
+/* Menu */
+
+.Topbar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border:1px solid white;
+}
+
+.logo{
+    width:100%;
+    display: flex;
+    align-items: center;
+}
+
+.logo:hover{
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius:10px
+}
+
+.logo img{
+    width:20%;
+}
+
+.logoText{
+    padding-left: 8px;
+}
+
+.Topbar-right{
+    display: flex;
+    align-items: center;
+}
+.member{
+    display: flex;
+    color:#B595FF;
+}
+.member:hover{
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius:10px
+}
+
+
+.member a{
+    color:#B595FF;
+    font-weight: 400;
+    transform: ;
+}
+
+.navigation{
+    display: flex;
+    align-items: center;
+    justify-content: ;
+}
+
+.navigation img{
+    padding: 0 10px;
+}
+
+
+/* 下面指令 */
+
+/* 定義色彩 */
+:root {
+    --Primary-Green: #acff6c;
+    --Neutral-grey: #b3b3b3;
+    --Neutral-Black: #2a2a2a;
+    --Neutral-White: #fff;
+}
+
+body {
+    background-color: var(--Neutral-Black);
+    color: var(--Neutral-White);
+    font-family: 'Noto Sans TC', sans-serif;
+    max-width: 1440px;
+    margin: 0 115px;
+    padding: 20px;
+}
+
+.forum-container {
+    padding:20px 0px;
+} 
+
+.forum-layout {
+    display: flex;
+    gap:20px; /* 網格間隙*/
+}
+
+.sidebar {
+    width: 18%;
+}
+
+.sidebar-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.category-board {
+    border: 1.5px solid var(--Neutral-grey);
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.category-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.category-item {
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    padding: 10px;
+    margin: 5px 0;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.category-item:hover {
+    background-color: rgba(181, 149, 255, 0.1);
+    border-radius: 3px;
+    color: var(--Primary-Green);
+}
+
+.ad-section {
+    aspect-ratio: 1/2;
+    background-color: #784a4e;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-content {
+    width: 82%;
+    border: 1.5px solid var(--Neutral-grey);
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-button div {
+    display: flex;
+}
+
+.nav-button {
+    color: var(--Primary-Green);
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 18px;
+    letter-spacing: 2.7px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    border: 1.5px solid var(--Primary-Green);
+    border-radius: 5px;
+    padding: 5px 10px;
+    width: 300px;
+}
+
+.search-input {
+    border: none;
+    background: none;
+    color: var(--Neutral-White);
+    width: 100%;
+    padding: 5px;
+}
+
+.search-input::placeholder {
+    color: var(--Neutral-grey);
+}
+
+.article-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.article-card {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    border-bottom: 1px solid var(--Neutral-grey);
+}
+
+.article-content {
+    flex: 1;
+}
+
+.article-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.author-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.author-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+.article-title {
+    color: var(--Primary-Green);
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.article-preview {
+    color: var(--Neutral-grey);
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.interaction-bar {
+    display: flex;
+    gap: 20px;
+}
+
+.interaction-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--Neutral-White);
+}
+
+.article-image {
+    width: 82px;
+    height: 82px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+@media (max-width: 991px) {
+    .forum-layout {
+        flex-direction: column;
+    }
+
+    .sidebar,
+    .main-content {
+        width: 100%;
+    }
+
+    .search-bar {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .article-card {
+        flex-direction: column;
+    }
+
+    .article-image {
+        width: 100%;
+        height: auto;
+    }
+}
+
+
+
 
