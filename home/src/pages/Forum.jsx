@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../component/Navbar";
-import "../style-C.scss";
+import "../style.scss";
 import ArticleList from "../component/ArticleList"; // 引入 ArticleList 組件
 import articles from "../js/articlesData";
 

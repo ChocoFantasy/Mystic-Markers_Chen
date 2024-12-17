@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import "../style-C.scss";
+import "../style.scss";
 
 const AuthModal = ({ isOpen, onClose, initialView }) => {
   const [currentView, setCurrentView] = useState(initialView);

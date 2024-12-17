@@ -127,68 +127,159 @@ a {
   }
 }
 
-.navigation {
-  width: 277px;
+.navigation-1 {
+  width: 500px;
   display: flex;
+  align-items: center;
   #Group {
     margin-right: 20px;
-    width: 30px;
+    width: 26px;
   }
   #news {
     margin-right: 20px;
     width: 24px;
   }
 
-  #menu {
-    width: 54px;
-    margin-left: 15px;
-  }
-}
-
-/* 下面指令 */
-
-/* 定義色彩 */
-
-:root {
-  --primary-green: #acff6c;
-  --Neutral-grey: #b3b3b3;
-  --Neutral-Black: #2a2a2a;
-  --Neutral-White: #ffffff;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  overflow: auto;
-  overflow: auto;
-  background-color: var(--Neutral-Black);
-  color: #ffffff;
-
-  font-family: "Noto Sans TC", sans-serif;
-}
-
-.top-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 30px;
-}
-
-.nav-buttons {
-  display: flex;
-  gap: 20px;
-}
-
-.nav-button {
-  div {
+  .navbar {
+    position: relative;
     display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    .hamburger {
+      // 修改button預設樣式
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+
+      .bar {
+        display: block;
+        width: 24px;
+        height: 3px;
+        background-color: $light;
+        margin: 5px auto;
+        transform: transform 0.35s opacity 0.35s;
+      }
+
+      &.is-active {
+        .bar {
+          &:nth-child(1) {
+            transform: rotate(45deg) translateY(6px) translateX(5px);
+          }
+
+          &:nth-child(2) {
+            opacity: 0;
+          }
+
+          &:nth-child(3) {
+            transform: rotate(-45deg) translateY(-6px) translateX(5px);
+          }
+        }
+      }
+    }
+
+    .navigation {
+      display: none;
+      justify-content: center;
+      position: absolute;
+      top: 30px;
+      /* 選單顯示在按鈕下方 */
+      padding: 60px;
+
+      border-radius: 5%;
+      // 直接寫在 css中， 一開始也不會出現，因為有設定display:none;
+      animation: hide 2s both;
+
+      background: linear-gradient(to bottom,
+          rgba(0, 0, 0, 1) 0%,
+          rgba(0, 0, 0, 0.30) 100%);
+
+      &.show {
+        display: flex;
+        animation: show 1s both;
+      }
+
+
+
+      .menu {
+        display: flex;
+        flex-direction: column;
+        font-family: $Chinese;
+        font-size: 26px;
+        font-weight: 1000;
+        list-style: none;
+        /* 移除預設項目符號 */
+
+
+        li {
+          position: relative;
+          margin-bottom: 20px;
+          /* 每個項目間距 */
+          display: flex;
+          align-items: center;
+
+          &::before {
+            content: "";
+            position: absolute;
+            left: -1.5em;
+            /* 調整小圓點的水平位置 */
+            width: 0.3em;
+            /* 圓點大小 */
+            height: 0.3em;
+            background-color: $primary-green;
+            border-radius: 25%;
+            z-index: 1;
+            transition: opacity 0.3s, transform 0.3s;
+            /* 添加動畫效果 */
+          }
+
+          a {
+            text-decoration: none;
+            color: #fff;
+            position: relative;
+            transition: color 0.3s;
+
+            &:hover {
+              color: #fff;
+              /* 保持文字顏色不變 */
+            }
+
+            &::after {
+              content: "";
+              position: absolute;
+              left: -1.5em;
+              /* 從項目符號開始 */
+              top: calc(50% - 4px);
+              /* 讓線條垂直居中並稍微調整覆蓋 垂直置中 */
+              width: calc(100% + 3em);
+              /* 覆蓋文字範圍，包含符號 */
+              height: 0.3em;
+              background-color: $primary-green;
+              transform: scaleX(0);
+              transform-origin: left;
+              /* 從左到右展開 */
+              transition: transform 0.3s;
+              border-radius: 4px;
+              z-index: 10;
+              /* 確保畫線在符號上方 */
+
+            }
+
+            &:hover::after {
+              transform: scaleX(1);
+            }
+
+            // 停留頁面時維持
+            &.active a::after {
+              transform: scaleX(1);
+            }
+
+          }
+        }
+      }
+    }
   }
 
-  color: var(--primary-green);
-  border: none;
-  background: none;
-  font-size: 18px;
-  letter-spacing: 2.7px;
 }
 
 /*HOME  */
@@ -846,5 +937,460 @@ footer {
 
   100% {
     color: $primary-green;
+  }
+}
+
+
+
+// Forum //
+
+body {
+  background-color: $deep;
+  color: $light;
+  font-family: 'Noto Sans TC', sans-serif;
+  margin: 0 115px;
+  padding: 20px;
+}
+
+.forum-container {
+  padding: 20px 0px;
+}
+
+.forum-layout {
+  width: 100%;
+  display: flex;
+  gap: 20px;
+
+  /* 網格間隙*/
+}
+
+.sidebar {
+  width: 20%;
+}
+
+.sidebar-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+
+.category-board {
+  border: 1.5px solid $grey;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.category-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.category-item {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  margin: 5px 0;
+  color: $primary-green;
+  cursor: pointer;
+  transition: color 0.5s ease;
+
+  p {
+    margin-left: 10px;
+  }
+
+  .list-item {
+    display: flex;
+
+    div {
+      width: 24px;
+    }
+  }
+
+  &:hover {
+    background-color: $primary-purple;
+    border-radius: 3px;
+    color: $primary-green;
+  }
+}
+
+.ad-section {
+  aspect-ratio: 1/2;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-content {
+  width: 80%;
+  border: 1.5px solid $grey;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-button {
+  div {
+    display: flex;
+  }
+
+  color: $primary-green;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 18px;
+  letter-spacing: 2.7px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid $primary-green;
+  border-radius: 5px;
+  padding: 5px 10px;
+  width: 300px;
+}
+
+.search-input {
+  border: none;
+  background: none;
+  color: $light;
+  width: 100%;
+  padding: 5px;
+
+  &::placeholder {
+    color: $grey;
+  }
+}
+
+.article-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.article-card {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  border-bottom: 1px solid $grey;
+}
+
+.article-content {
+  flex: 1;
+}
+
+.article-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.author-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+// 作者圖片外形狀
+.author-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.article-title {
+  color: $primary-green;
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.article-preview {
+  color: $grey;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+
+  display: -webkit-box; // 讓容器變為多行文本容器
+  -webkit-line-clamp: 1; // 限制顯示一行
+  -webkit-box-orient: vertical; // 設定文本顯示方向為垂直
+  overflow: hidden; // 超出部分隱藏
+  text-overflow: ellipsis; // 超出部分顯示省略號
+  white-space: normal; // 確保文本換行
+}
+
+.interaction-bar {
+  display: flex;
+  gap: 20px;
+}
+
+.interaction-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: $light;
+}
+
+
+
+.article-Graphics-text {
+  display: flex;
+  justify-content: space-between; // 左右兩邊間隔
+  align-items: center; // 垂直對齊
+
+  .left {
+    flex: 1; //left 區塊佔用剩餘空間
+    padding-right: 20px; //讓內容與右邊距離不要太近
+  }
+
+  .right {
+    flex-shrink: 0; // 防止 .right 區塊縮小，保持圖片大小
+    width: 85px; // 可以根據需要設置圖片的寬度
+  }
+
+  .article-image {
+    width: 100%; //圖片佔滿 .right 區塊寬度
+    border-radius: 5px;
+    object-fit: cover;
+  }
+}
+
+// RWD 
+
+@media (max-width: 991px) {
+  .forum-layout {
+    flex-direction: column;
+  }
+
+  .sidebar,
+  .main-content {
+    width: 100%;
+  }
+
+  .search-bar {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .article-card {
+    flex-direction: column;
+  }
+
+  .article-image {
+    width: 100%;
+    height: auto;
+  }
+}
+
+// 登入/註冊
+/* 整體視窗背景遮罩 */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  /* 半透明深色背景 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* 主視窗 */
+.modal {
+  background: #2A2A2A;
+  /* 深灰色背景 */
+  border-radius: 12px;
+  width: 400px;
+  padding: 30px 25px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+  text-align: center;
+  font-family: "Arial", sans-serif;
+}
+
+/* 關閉按鈕 (叉叉) */
+.close-btn {
+  position: absolute;
+  top: -5px;
+  right: -200px;
+  background: transparent;
+  border: none;
+  font-size: 32px;
+  font-weight: bold;
+  color: #acff6c;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #B595FF;
+  /* 懸停時變紫色 */
+}
+
+.title-login {
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  /* LOGO 圖片  */
+  .login-LOGO {
+    width: 25%;
+  }
+
+  /* 標題 */
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #acff6c;
+    /* 螢光綠主色 */
+  }
+}
+
+
+/* 表單容器 */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+/* 輸入框 */
+.form-container input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #B595FF;
+  /* 淡紫色邊框 */
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+  background-color: #FFFFFF;
+  /* 白色背景 */
+  color: #2A2A2A;
+  /* 深灰色文字 */
+}
+
+.form-container input:focus {
+  outline: none;
+  border-color: #acff6c;
+  /* 聚焦時變綠色 */
+}
+
+/* 按鈕樣式 */
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 登入按鈕 */
+.login-btn {
+  background-color: #acff6c;
+  color: #2A2A2A;
+}
+
+.login-btn:hover {
+  background-color: #95e05c;
+}
+
+/* 註冊按鈕 */
+.register-btn {
+  background-color: #B595FF;
+  color: #FFFFFF;
+}
+
+.register-btn:hover {
+  background-color: #9c7fdd;
+}
+
+/* 訊息文字 */
+p {
+  font-size: 14px;
+  color: #FFFFFF;
+  /* 白色文字 */
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+p:hover {
+  color: #B595FF;
+  /* 紫色 */
+}
+
+/* 密碼顯示文字 */
+.password-display {
+  font-size: 16px;
+  color: #acff6c;
+  font-weight: bold;
+}
+
+
+.welcome-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  span {
+    color: white;
+  }
+
+  .auth-btn {
+    background-color: #555;
+    padding: 5px 5px;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #777;
+    }
+  }
+}
+/* 會員圖示 */
+.group-info {
+  position: absolute;
+  top: 50px; // 根據實際 Navbar 調整
+  background-color: #444;
+  padding: 10px;
+  border-radius: 5px;
+
+  p {
+    color: white;
+    margin: 0 0 10px;
+  }
+
+  .auth-btn {
+    background-color: #777;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #999;
+    }
   }
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import AuthModal from "./AuthModal";
-import "../style-C.scss";
+import "../style.scss";
 import { Link } from "react-router-dom";
 
 // Menu
