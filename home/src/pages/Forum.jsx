@@ -5,96 +5,72 @@ import ArticleList from "../component/ArticleList"; // 引入 ArticleList 組件
 import articles from "../js/articlesData";
 import PostModal from "../component/PostModal"; // 引入彈出視窗組件
 
-function Forum() {
-  const [isModalOpen, setModalOpen] = useState(false); // 控制彈出視窗的狀態
+const Forum = () => {
+  // 搜尋相關邏輯
+  const [searchValue, setSearchValue] = useState("");
+  const [filteredResults, setFilteredResults] = useState([]);
+  const dummyData = [
+    { title: "民雄鬼屋" },
+    { title: "荒廢" },
+    { title: "噩夢" },
+    { title: "SCP" },
+  ];
+
+  const handleSearch = () => {
+    if (searchValue.trim() === "") return; // 空值不搜尋
+    const results = dummyData.filter((item) =>
+      item.title.includes(searchValue)
+    );
+    setFilteredResults(results);
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
+  };
+
+  // 發文彈出視窗
+  const [isModalOpen, setModalOpen] = useState(false);
 
   return (
     <>
+      {/* 頁面橫幅 */}
       <section id="banner">
         <Navbar />
       </section>
+
+      {/* 主體 */}
       <div className="forum-body">
-        {/* 分類欄位 + 文章欄位 */}
         <div className="forum-container">
-          {/* 外框架 */}
           <div className="forum-layout">
-            {/* 分類欄位 */}
+            {/* 側邊欄位 */}
             <aside className="sidebar">
               <div className="sidebar-content">
                 <nav className="category-board">
                   <ul className="category-list" role="list">
-                    <li className="category-item active" role="listitem">
-                      <div className="list-item">
+                    {[
+                      { icon: "Forum_list-box", label: "所有看板" },
+                      { icon: "Forum-symbols-book-5", label: "都市傳說" },
+                      { icon: "Forum_building", label: "廢墟探險" },
+                      { icon: "Forum_movie", label: "恐怖獵奇" },
+                      { icon: "Forum_ghost-2", label: "恐怖作品" },
+                      { icon: "Forum_temple", label: "驅邪收驚" },
+                      { icon: "Forum_building", label: "我的收藏" },
+                    ].map((item, index) => (
+                      <li key={index} className="category-item" role="listitem">
                         <div>
                           <img
-                            src="../public/images/Forum/Forum_list-box.svg"
-                            alt="AllList"
+                            src={`../public/images/Forum/${item.icon}.svg`}
+                            alt={item.label}
                           />
+                          <p>{item.label}</p>
                         </div>
-                        <p>所有看板</p>
-                      </div>
-                    </li>
-                    <li className="category-item" role="listitem">
-                      <div>
-                        <img
-                          src="../public/images/Forum/Forum-symbols-book-5.svg"
-                          alt="AllList"
-                        />
-                      </div>
-                      <p>都市傳說</p>
-                    </li>
-                    <li className="category-item" role="listitem">
-                      <div>
-                        <img
-                          src="../public/images/Forum/Forum_building.svg"
-                          alt="AllList"
-                        />
-                      </div>
-                      <p>廢墟探險</p>
-                    </li>
-                    <li className="category-item" role="listitem">
-                      <div>
-                        <img
-                          src="../public/images/Forum/Forum_movie.svg"
-                          alt="AllList"
-                        />
-                      </div>
-                      <p>恐怖獵奇</p>
-                    </li>
-                    <li className="category-item" role="listitem">
-                      <div>
-                        <img
-                          src="../public/images/Forum/Forum_ghost-2.svg"
-                          alt="AllList"
-                        />
-                      </div>
-                      <p>恐怖作品</p>
-                    </li>
-                    <li className="category-item" role="listitem">
-                      <div>
-                        <img
-                          src="../public/images/Forum/Forum_temple.svg"
-                          alt="AllList"
-                        />
-                      </div>
-                      <p>驅邪收驚</p>
-                    </li>
-                    <li className="category-item" role="listitem">
-                      <div>
-                        <img
-                          src="../public/images/Forum/Forum_building.svg"
-                          alt="AllList"
-                        />
-                      </div>
-                      <p>我的收藏</p>
-                    </li>
+                      </li>
+                    ))}
                   </ul>
                 </nav>
-                <div
-                  className="ad-section"
-                  role="complementary"
-                  aria-label="廣告區域"
-                >
+                <div className="ad-section" role="complementary" aria-label="廣告區域">
                   <img
                     className="ad-text"
                     src="../public/images/Forum/HORRO.svg"
@@ -103,72 +79,70 @@ function Forum() {
                 </div>
               </div>
             </aside>
-            {/* 發文欄位 */}
+
+            {/* 主內容 */}
             <main className="main-content">
               <div className="top-bar">
+                {/* 按鈕欄 */}
                 <div className="nav-buttons">
-                  <div>
-                    <img
-                      src="../public/images/Forum/mingcute_fire-fill.svg"
-                      alt="HIT"
-                      className="HOT"
-                    />
-                    <button className="nav-button" type="button">
-                      <p>熱門</p>
-                    </button>
-                  </div>
-                  <div>
-                    <img
-                      src="../public/images/Forum/emojione-monotone_new-button.svg"
-                      alt="NEWS"
-                      className="NEWS"
-                    />
-                    <button className="nav-button" type="button">
-                      <p>最新</p>
-                    </button>
-                  </div>
-                  <div>
-                    <img
-                      src="../public/images/Forum/ooui_notice.svg"
-                      alt="RULE"
-                      className="RULE"
-                    />
-                    <button className="nav-button" type="button">
-                      <p>發文規則</p>
-                    </button>
-                  </div>
+                  {[
+                    { icon: "mingcute_fire-fill", label: "熱門" },
+                    { icon: "emojione-monotone_new-button", label: "最新" },
+                    { icon: "ooui_notice", label: "發文規則" },
+                  ].map((item, index) => (
+                    <div key={index}>
+                      <img
+                        src={`../public/images/Forum/${item.icon}.svg`}
+                        alt={item.label}
+                      />
+                      <button className="nav-button" type="button">
+                        <p>{item.label}</p>
+                      </button>
+                    </div>
+                  ))}
                 </div>
 
+                {/* 搜尋欄位 */}
                 <div className="right-bar">
-                  <div className="search-bar" role="search">
-                    <input
-                      type="search"
-                      className="search-input"
-                      placeholder="搜尋 民雄鬼屋"
-                      aria-label="搜尋文章"
-                    />
-                    <button type="button" aria-label="搜尋">
-                      <svg
-                        width={24}
-                        height={24}
-                        viewBox="0 0 24 24"
-                        fill="#acff6c"
-                      >
-                        <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
-                      </svg>
-                    </button>
+                  <div className="search-bar-container">
+                    <div className="search-bar">
+                      <input
+                        type="text"
+                        className="search-input"
+                        placeholder="搜尋 民雄鬼屋"
+                        value={searchValue}
+                        onChange={(e) => setSearchValue(e.target.value)}
+                        onKeyDown={handleKeyDown}
+                      />
+                      <button className="search-button" onClick={handleSearch}>
+                        <img
+                          src="../public/images/Forum/search-icon.svg"
+                          alt="搜尋"
+                        />
+                      </button>
+                    </div>
+                    {/* 搜尋結果 */}
+                    <div className="search-results">
+                      {filteredResults.length > 0 ? (
+                        <ul>
+                          {filteredResults.map((item, index) => (
+                            <li key={index}>{item.title}</li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <p>沒有找到相關結果。</p>
+                      )}
+                    </div>
                   </div>
-                  {/* 發表文章 */}
+
+                  {/* 發表文章按鈕 */}
                   <div className="PostModal-bar">
-                    {/* 啟動按鈕 */}
                     <img
                       src="../../images/Forum/jam_write.png"
                       alt="撰寫文章"
                       style={{ cursor: "pointer", width: "50px" }}
-                      onClick={() => setModalOpen(true)} // 點擊按鈕開啟彈窗
+                      onClick={() => setModalOpen(true)}
                     />
-
-                    {/* 彈出視窗 */}
                     <PostModal
                       isOpen={isModalOpen}
                       onClose={() => setModalOpen(false)}
@@ -176,15 +150,15 @@ function Forum() {
                   </div>
                 </div>
               </div>
-              <div>
-                <ArticleList articles={articles} />
-              </div>
+
+              {/* 文章列表 */}
+              <ArticleList articles={articles} />
             </main>
           </div>
         </div>
       </div>
     </>
   );
-}
+};
 
 export default Forum;

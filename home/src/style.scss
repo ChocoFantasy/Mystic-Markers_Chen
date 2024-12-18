@@ -1166,55 +1166,57 @@ footer {
 
   .sidebar {
     width: 20%;
-  }
-
-  .sidebar-content {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-
-  .category-board {
-    border: 1.5px solid $grey;
-    border-radius: 5px;
-    padding: 20px;
-  }
-
-  .category-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .category-item {
-    display: flex;
-    flex-direction: row;
-    padding: 5px;
-    margin: 5px 0;
-    color: $primary-green;
-    cursor: pointer;
-    transition: color 0.5s ease;
-
-    p {
-      margin-left: 10px;
-    }
-
-    .list-item {
+  
+    .sidebar-content {
       display: flex;
-
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .category-board {
+      border: 1.5px solid $grey;
+      border-radius: 5px;
+      padding: 44px; // 調整內邊距
+    }
+  
+    .category-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+  
+    .category-item {
+      padding: 8px 15px; // 調整padding
+      margin: 5px 0;
+      color: $primary-green;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      border-radius: 8px; // 圓角
+      
       div {
-        width: 24px;
+        display: flex;
+        justify-content: center;
+
+        img {
+          width: 24px; // 統一圖片大小
+          height: 24px;
+        }
+    
+        p {
+          margin-left: 12px;
+          font-size: 18px; // 調整文字大小
+        }
+      }
+
+      &:hover {
+        background-color: $primary-purple; // hover 背景
+        color: $primary-green;
       }
     }
-
-    &:hover {
-      background-color: $primary-purple;
-      border-radius: 3px;
-      color: $primary-green;
-    }
   }
+  
 
+ 
   .ad-section {
     aspect-ratio: 1/2;
     border-radius: 5px;
@@ -1289,21 +1291,42 @@ footer {
     .search-bar {
       display: flex;
       align-items: center;
-      border: 1.5px solid $primary-green;
-      border-radius: 5px;
-      padding: 5px 10px;
-      width: 300px;
-    }
-
-    .search-input {
-      border: none;
-      background: none;
-      color: $light;
-      width: 100%;
-      padding: 5px;
-
-      &::placeholder {
-        color: $grey;
+      border: 2px solid $primary-green; // 藍色邊框
+      border-radius: 8px; // 圓角
+      overflow: hidden; // 避免按鈕超出邊界
+    
+      .search-input {
+        flex: 1; // 讓輸入框佔據剩餘空間
+        padding: 8px 12px;
+        border: none;
+        outline: none;
+        font-size: 16px;
+        color: #333;
+    
+        &::placeholder {
+          color: #a0a0a0; // placeholder 顏色
+        }
+      }
+    
+      .search-button {
+        background-color: #acff6c; // 亮綠色背景
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 20px;
+        padding: 0 12px;
+        cursor: pointer;
+    
+        .search-icon {
+          width: 26px;
+          height: 24px;
+        }
+    
+        &:hover {
+          background-color: #9fe75e; // 滑鼠懸停時的顏色變化
+        }
       }
     }
   }
