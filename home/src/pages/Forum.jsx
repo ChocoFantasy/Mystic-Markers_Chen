@@ -109,32 +109,32 @@ function Forum() {
                 <div className="nav-buttons">
                   <div>
                     <img
-                      src="../public/images/LOGO.png"
+                      src="../public/images/Forum/mingcute_fire-fill.svg"
                       alt="HIT"
-                      className=""
+                      className="HOT"
                     />
                     <button className="nav-button" type="button">
-                      熱門
+                      <p>熱門</p>
                     </button>
                   </div>
                   <div>
                     <img
-                      src="../public/images/LOGO.png"
+                      src="../public/images/Forum/emojione-monotone_new-button.svg"
                       alt="NEWS"
-                      className=""
+                      className="NEWS"
                     />
                     <button className="nav-button" type="button">
-                      最新
+                      <p>最新</p>
                     </button>
                   </div>
                   <div>
                     <img
-                      src="../public/images/LOGO.png"
+                      src="../public/images/Forum/ooui_notice.svg"
                       alt="RULE"
-                      className=""
-                    />{" "}
+                      className="RULE"
+                    />
                     <button className="nav-button" type="button">
-                      發文規則
+                      <p>發文規則</p>
                     </button>
                   </div>
                 </div>

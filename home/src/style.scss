@@ -1148,9 +1148,9 @@ footer {
 .forum-body {
   background-color: $deep;
   color: $light;
-  font-family: 'Noto Sans TC', sans-serif;
   margin: 0 115px;
   padding: 20px;
+  font-weight:600;
 
   .forum-container {
     padding: 20px 0;
@@ -1238,22 +1238,50 @@ footer {
   }
 
   .nav-buttons {
+    
     display: flex;
-    gap: 20px;
-  }
+    align-items: center;
+    gap: 15px; // 控制按鈕間距
 
-  .nav-button {
     div {
       display: flex;
-    }
+      align-items: center; // 圖示與文字垂直對齊
+      padding: 5px 10px; // 增加按鈕區塊的內邊距
+      border-radius: 5px; // 圓角設計
+      cursor: pointer;
+      transition: all 0.3s ease;
+  
+      &:hover {
+        background-color: $primary-purple; // 滑鼠懸停時的背景效果
+        p {
+          color: $deep;
+        }
+      }
+  
+      &.active { 
+        background-color: #d8b4f8; // 選中按鈕的背景顏色
+      }
+  
+      img {
+        width: 24px; // 控制圖示大小
+        height: 24px;
+        margin-right: 8px; // 圖示與文字的間距
+      }
+  
+      .nav-button {
+        color: #acff6c; // 文字顏色
+        font-size: 18px;
+        border: none;
+        background: none;
+        letter-spacing: 2.7px;
 
-    color: $primary-green;
-    border: none;
-    background: none;
-    cursor: pointer;
-    font-size: 18px;
-    letter-spacing: 2.7px;
+      }
+    }
   }
+
+}
+
+
 
   .right-bar {
     display: flex;
@@ -1402,9 +1430,6 @@ footer {
     }
   }
 
-  // 登入/註冊
- 
-
   /* 撰寫文章  */
   #postModal {
     display: none; // 預設隱藏
@@ -1515,10 +1540,5 @@ footer {
           }
         }
       }
-
-
     }
   }
-
-
-}
