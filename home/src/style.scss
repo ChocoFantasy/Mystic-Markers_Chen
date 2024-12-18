@@ -80,8 +80,7 @@ a {
   align-items: center;
 
   &:hover {
-    filter: invert(42%) saturate(1352%) hue-rotate(140deg) brightness(120%)
-      contrast(119%);
+    filter: invert(42%) saturate(1352%) hue-rotate(140deg) brightness(120%) contrast(119%);
   }
 
   img {
@@ -102,6 +101,178 @@ a {
   padding: 0;
   align-items: center;
   margin-left: 115px;
+   /* 整體視窗背景遮罩 */
+   .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    /* 半透明深色背景 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  /* 主視窗 */
+  .modal {
+    background: #2A2A2A;
+    /* 深灰色背景 */
+    border-radius: 12px;
+    width: 400px;
+    padding: 30px 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    text-align: center;
+    font-family: "Arial", sans-serif;
+  }
+
+  /* 關閉按鈕 (叉叉) */
+  .close-btn {
+    position: absolute;
+    top: -5px;
+    right: -200px;
+    background: transparent;
+    border: none;
+    font-size: 32px;
+    font-weight: bold;
+    color: #acff6c;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+
+  .close-btn:hover {
+    color: #B595FF;
+    /* 懸停時變紫色 */
+  }
+
+  .title-login {
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    /* LOGO 圖片  */
+    .login-LOGO {
+      width: 25%;
+    }
+
+    /* 標題 */
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #acff6c;
+      /* 螢光綠主色 */
+    }
+  }
+
+
+  /* 表單容器 */
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10px;
+  }
+
+  /* 輸入框 */
+  .form-container input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #B595FF;
+    /* 淡紫色邊框 */
+    border-radius: 6px;
+    font-size: 14px;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    /* 白色背景 */
+    color: #2A2A2A;
+    /* 深灰色文字 */
+  }
+
+  .form-container input:focus {
+    outline: none;
+    border-color: #acff6c;
+    /* 聚焦時變綠色 */
+  }
+
+  /* 按鈕樣式 */
+  button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* 登入按鈕 */
+  .login-btn {
+    background-color: #acff6c;
+    color: #2A2A2A;
+  }
+
+  .login-btn:hover {
+    background-color: #95e05c;
+  }
+
+  /* 註冊按鈕 */
+  .register-btn {
+    background-color: #B595FF;
+    color: #FFFFFF;
+  }
+
+  .register-btn:hover {
+    background-color: #9c7fdd;
+  }
+
+  /* 訊息文字 */
+  p {
+    font-size: 14px;
+    color: #FFFFFF;
+    /* 白色文字 */
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+
+  p:hover {
+    color: #B595FF;
+    /* 紫色 */
+  }
+
+  /* 密碼顯示文字 */
+  .password-display {
+    font-size: 16px;
+    color: #acff6c;
+    font-weight: bold;
+  }
+
+
+  .welcome-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    span {
+      color: white;
+    }
+
+    .auth-btn {
+      background-color: #555;
+      padding: 5px 5px;
+      border: none;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #777;
+      }
+    }
+  }
 }
 
 .member {
@@ -131,10 +302,38 @@ a {
   width: 175px;
   display: flex;
   align-items: center;
+
+   /* 會員圖示 */
+   
   #Group {
     margin-right: 20px;
     width: 26px;
+    .group-info {
+      position: absolute;
+      top: 50px; // 根據實際 Navbar 調整
+      background-color: #444;
+      padding: 10px;
+      border-radius: 5px;
+  
+      p {
+        color: white;
+        margin: 0 0 10px;
+      }
+  
+      .auth-btn {
+        background-color: #777;
+        color: white;
+        padding: 5px 10px;
+        border: none;
+        cursor: pointer;
+  
+        &:hover {
+          background-color: #999;
+        }
+      }
+    }
   }
+
   #news {
     margin-right: 20px;
     width: 24px;
@@ -333,6 +532,7 @@ a {
         height: 100%;
         z-index: -2;
         transform: rotate(-90deg);
+
         .fog-area-g {
           position: absolute;
           overflow: hidden;
@@ -352,21 +552,21 @@ a {
       overflow: hidden;
       top: 0%;
       left: 0;
-      width:100%;
+      width: 100%;
       height: 100%;
       z-index: -1;
       pointer-events: none;
       /* 使用遮罩限制霧的區域 */
       mask-image: url("/images/fog-mask2.png");
       mask-repeat: no-repeat;
-      mask-size:auto;
+      mask-size: auto;
       mask-position: top 0;
 
       /* Webkit 瀏覽器支持 */
       -webkit-mask-image: url("/images/fog-mask2.png");
       -webkit-mask-repeat: no-repeat;
       -webkit-mask-size: cover;
-      -webkit-mask-position:top 0 ;
+      -webkit-mask-position: top 0;
     }
 
     .logoXL {
@@ -450,6 +650,7 @@ a {
       h3 {
         @include font-style($font-medium-24);
         margin-top: 16px;
+
         &:hover {
           cursor: none;
           text-shadow: 5px 5px 0 rgba(255, 0, 0, 0.4),
@@ -505,14 +706,14 @@ a {
         }
       }
 
-      .intro1fog-G{
+      .intro1fog-G {
         position: absolute;
-        top:-10%;
-        right:-10%;
+        top: -10%;
+        right: -10%;
         z-index: 0;
-        width:150%;
+        width: 150%;
         mix-blend-mode: lighten;
-        opacity:0.8;
+        opacity: 0.8;
         overflow: hidden;
       }
     }
@@ -556,6 +757,7 @@ a {
         top: 120vh;
         left: 0;
         border: #ffffff 1px;
+
         img {
           width: 30%;
           z-index: 1;
@@ -773,8 +975,8 @@ a:hover #custom-cursor::after {
   /* 啟用動畫 */
 }
 
-a:hover + #custom-cursor,
-a:hover ~ #custom-cursor {
+a:hover+#custom-cursor,
+a:hover~#custom-cursor {
   mix-blend-mode: difference;
 }
 
@@ -825,6 +1027,7 @@ footer {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+
       small {
         color: #6c5387;
         margin-left: 60px;
@@ -940,457 +1143,382 @@ footer {
   }
 }
 
-
-
 // Forum //
 
-body {
+.forum-body {
   background-color: $deep;
   color: $light;
   font-family: 'Noto Sans TC', sans-serif;
   margin: 0 115px;
   padding: 20px;
-}
 
-.forum-container {
-  padding: 20px 0px;
-}
-
-.forum-layout {
-  width: 100%;
-  display: flex;
-  gap: 20px;
-
-  /* 網格間隙*/
-}
-
-.sidebar {
-  width: 20%;
-}
-
-.sidebar-content {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-
-.category-board {
-  border: 1.5px solid $grey;
-  border-radius: 5px;
-  padding: 20px;
-}
-
-.category-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.category-item {
-  display: flex;
-  flex-direction: row;
-  padding: 5px;
-  margin: 5px 0;
-  color: $primary-green;
-  cursor: pointer;
-  transition: color 0.5s ease;
-
-  p {
-    margin-left: 10px;
+  .forum-container {
+    padding: 20px 0;
   }
 
-  .list-item {
+  .forum-layout {
+    width: 100%;
     display: flex;
+    gap: 20px;
 
-    div {
-      width: 24px;
+    /* 網格間隙*/
+  }
+
+  .sidebar {
+    width: 20%;
+  }
+
+  .sidebar-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+
+  .category-board {
+    border: 1.5px solid $grey;
+    border-radius: 5px;
+    padding: 20px;
+  }
+
+  .category-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .category-item {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    margin: 5px 0;
+    color: $primary-green;
+    cursor: pointer;
+    transition: color 0.5s ease;
+
+    p {
+      margin-left: 10px;
+    }
+
+    .list-item {
+      display: flex;
+
+      div {
+        width: 24px;
+      }
+    }
+
+    &:hover {
+      background-color: $primary-purple;
+      border-radius: 3px;
+      color: $primary-green;
     }
   }
 
-  &:hover {
-    background-color: $primary-purple;
-    border-radius: 3px;
-    color: $primary-green;
-  }
-}
-
-.ad-section {
-  aspect-ratio: 1/2;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.main-content {
-  width: 80%;
-  border: 1.5px solid $grey;
-  border-radius: 5px;
-  padding: 20px;
-}
-
-.top-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 30px;
-}
-
-.nav-buttons {
-  display: flex;
-  gap: 20px;
-}
-
-.nav-button {
-  div {
-    display: flex;
-  }
-
-  color: $primary-green;
-  border: none;
-  background: none;
-  cursor: pointer;
-  font-size: 18px;
-  letter-spacing: 2.7px;
-}
-
-.search-bar {
-  display: flex;
-  align-items: center;
-  border: 1.5px solid $primary-green;
-  border-radius: 5px;
-  padding: 5px 10px;
-  width: 300px;
-}
-
-.search-input {
-  border: none;
-  background: none;
-  color: $light;
-  width: 100%;
-  padding: 5px;
-
-  &::placeholder {
-    color: $grey;
-  }
-}
-
-.article-list {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
-
-.article-card {
-  display: flex;
-  gap: 20px;
-  padding: 20px;
-  border-bottom: 1px solid $grey;
-}
-
-.article-content {
-  flex: 1;
-}
-
-.article-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.author-info {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-// 作者圖片外形狀
-.author-avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-}
-
-.article-title {
-  color: $primary-green;
-  font-size: 20px;
-  margin: 10px 0;
-}
-
-.article-preview {
-  color: $grey;
-  font-size: 14px;
-  line-height: 1.5;
-  margin-bottom: 15px;
-
-  display: -webkit-box; // 讓容器變為多行文本容器
-  -webkit-line-clamp: 1; // 限制顯示一行
-  -webkit-box-orient: vertical; // 設定文本顯示方向為垂直
-  overflow: hidden; // 超出部分隱藏
-  text-overflow: ellipsis; // 超出部分顯示省略號
-  white-space: normal; // 確保文本換行
-}
-
-.interaction-bar {
-  display: flex;
-  gap: 20px;
-}
-
-.interaction-item {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  color: $light;
-}
-
-
-
-.article-Graphics-text {
-  display: flex;
-  justify-content: space-between; // 左右兩邊間隔
-  align-items: center; // 垂直對齊
-
-  .left {
-    flex: 1; //left 區塊佔用剩餘空間
-    padding-right: 20px; //讓內容與右邊距離不要太近
-  }
-
-  .right {
-    flex-shrink: 0; // 防止 .right 區塊縮小，保持圖片大小
-    width: 85px; // 可以根據需要設置圖片的寬度
-  }
-
-  .article-image {
-    width: 100%; //圖片佔滿 .right 區塊寬度
+  .ad-section {
+    aspect-ratio: 1/2;
     border-radius: 5px;
-    object-fit: cover;
-  }
-}
-
-// RWD 
-
-@media (max-width: 991px) {
-  .forum-layout {
-    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .sidebar,
   .main-content {
-    width: 100%;
+    width: 80%;
+    border: 1.5px solid $grey;
+    border-radius: 5px;
+    padding: 20px;
   }
 
-  .search-bar {
-    width: 100%;
-    max-width: 300px;
+  .top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+
+  .nav-buttons {
+    display: flex;
+    gap: 20px;
+  }
+
+  .nav-button {
+    div {
+      display: flex;
+    }
+
+    color: $primary-green;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 18px;
+    letter-spacing: 2.7px;
+  }
+
+  .right-bar {
+    display: flex;
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      border: 1.5px solid $primary-green;
+      border-radius: 5px;
+      padding: 5px 10px;
+      width: 300px;
+    }
+
+    .search-input {
+      border: none;
+      background: none;
+      color: $light;
+      width: 100%;
+      padding: 5px;
+
+      &::placeholder {
+        color: $grey;
+      }
+    }
+  }
+
+
+
+  .article-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
   }
 
   .article-card {
-    flex-direction: column;
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    border-bottom: 1px solid $grey;
   }
 
-  .article-image {
+  .article-content {
+    flex: 1;
+  }
+
+  .article-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .author-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  // 作者圖片外形狀
+  .author-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+  }
+
+  .article-title {
+    color: $primary-green;
+    font-size: 20px;
+    margin: 10px 0;
+  }
+
+  .article-preview {
+    color: $grey;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+
+    display: -webkit-box; // 讓容器變為多行文本容器
+    -webkit-line-clamp: 1; // 限制顯示一行
+    -webkit-box-orient: vertical; // 設定文本顯示方向為垂直
+    overflow: hidden; // 超出部分隱藏
+    text-overflow: ellipsis; // 超出部分顯示省略號
+    white-space: normal; // 確保文本換行
+  }
+
+  .interaction-bar {
+    display: flex;
+    gap: 20px;
+  }
+
+  .interaction-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: $light;
+  }
+
+
+
+  .article-Graphics-text {
+    display: flex;
+    justify-content: space-between; // 左右兩邊間隔
+    align-items: center; // 垂直對齊
+
+    .left {
+      flex: 1; //left 區塊佔用剩餘空間
+      padding-right: 20px; //讓內容與右邊距離不要太近
+    }
+
+    .right {
+      flex-shrink: 0; // 防止 .right 區塊縮小，保持圖片大小
+      width: 85px; // 可以根據需要設置圖片的寬度
+    }
+
+    .article-image {
+      width: 100%; //圖片佔滿 .right 區塊寬度
+      border-radius: 5px;
+      object-fit: cover;
+    }
+  }
+
+  // RWD 
+
+  @media (max-width: 991px) {
+    .forum-layout {
+      flex-direction: column;
+    }
+
+    .sidebar,
+    .main-content {
+      width: 100%;
+    }
+
+    .search-bar {
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .article-card {
+      flex-direction: column;
+    }
+
+    .article-image {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  // 登入/註冊
+ 
+
+  /* 撰寫文章  */
+  #postModal {
+    display: none; // 預設隱藏
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: auto;
-  }
-}
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex; // 修正顯示時要用 flex 排版
+    justify-content: center;
+    align-items: center;
 
-// 登入/註冊
-/* 整體視窗背景遮罩 */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  /* 半透明深色背景 */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
+    .modal-content {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      width: 400px;
+      position: relative;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      text-align: left;
 
-/* 主視窗 */
-.modal {
-  background: #2A2A2A;
-  /* 深灰色背景 */
-  border-radius: 12px;
-  width: 400px;
-  padding: 30px 25px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  position: relative;
-  text-align: center;
-  font-family: "Arial", sans-serif;
-}
+      .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 24px;
+        color: #aaa;
+        cursor: pointer;
 
-/* 關閉按鈕 (叉叉) */
-.close-btn {
-  position: absolute;
-  top: -5px;
-  right: -200px;
-  background: transparent;
-  border: none;
-  font-size: 32px;
-  font-weight: bold;
-  color: #acff6c;
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
+        &:hover {
+          color: #000;
+        }
+      }
 
-.close-btn:hover {
-  color: #B595FF;
-  /* 懸停時變紫色 */
-}
+      .user-info {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
 
-.title-login {
+        .avatar {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          margin-right: 10px;
+        }
 
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+        #userName {
+          font-size: 16px;
+          font-weight: bold;
+        }
+      }
 
-  /* LOGO 圖片  */
-  .login-LOGO {
-    width: 25%;
-  }
+      #boardSelect {
+        width: 100%;
+        padding: 5px;
+        margin-bottom: 15px;
+        font-size: 14px;
+      }
 
-  /* 標題 */
-  h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #acff6c;
-    /* 螢光綠主色 */
-  }
-}
+      #postTitle,
+      #postContent {
+        width: 100%;
+        margin-bottom: 15px;
+        padding: 8px;
+        font-size: 14px;
+        box-sizing: border-box;
 
+        &#postContent {
+          height: 120px;
+          resize: none;
+        }
+      }
 
-/* 表單容器 */
-.form-container {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin-top: 10px;
-}
+      .media-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
 
-/* 輸入框 */
-.form-container input {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #B595FF;
-  /* 淡紫色邊框 */
-  border-radius: 6px;
-  font-size: 14px;
-  box-sizing: border-box;
-  background-color: #FFFFFF;
-  /* 白色背景 */
-  color: #2A2A2A;
-  /* 深灰色文字 */
-}
+        button {
+          padding: 8px 12px;
+          background-color: #007bff;
+          color: #fff;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
 
-.form-container input:focus {
-  outline: none;
-  border-color: #acff6c;
-  /* 聚焦時變綠色 */
-}
+          &:hover {
+            background-color: #0056b3;
+          }
+        }
+      }
 
-/* 按鈕樣式 */
-button {
-  width: 100%;
-  padding: 12px;
-  border: none;
-  border-radius: 6px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
+      .action-buttons {
+        display: flex;
+        justify-content: space-between;
 
-/* 登入按鈕 */
-.login-btn {
-  background-color: #acff6c;
-  color: #2A2A2A;
-}
+        button {
+          padding: 8px 12px;
+          background-color: #007bff;
+          color: #fff;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
 
-.login-btn:hover {
-  background-color: #95e05c;
-}
-
-/* 註冊按鈕 */
-.register-btn {
-  background-color: #B595FF;
-  color: #FFFFFF;
-}
-
-.register-btn:hover {
-  background-color: #9c7fdd;
-}
-
-/* 訊息文字 */
-p {
-  font-size: 14px;
-  color: #FFFFFF;
-  /* 白色文字 */
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
-
-p:hover {
-  color: #B595FF;
-  /* 紫色 */
-}
-
-/* 密碼顯示文字 */
-.password-display {
-  font-size: 16px;
-  color: #acff6c;
-  font-weight: bold;
-}
+          &:hover {
+            background-color: #0056b3;
+          }
+        }
+      }
 
 
-.welcome-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-
-  span {
-    color: white;
-  }
-
-  .auth-btn {
-    background-color: #555;
-    padding: 5px 5px;
-    border: none;
-    cursor: pointer;
-
-    &:hover {
-      background-color: #777;
     }
   }
-}
-/* 會員圖示 */
-.group-info {
-  position: absolute;
-  top: 50px; // 根據實際 Navbar 調整
-  background-color: #444;
-  padding: 10px;
-  border-radius: 5px;
 
-  p {
-    color: white;
-    margin: 0 0 10px;
-  }
 
-  .auth-btn {
-    background-color: #777;
-    color: white;
-    padding: 5px 10px;
-    border: none;
-    cursor: pointer;
-
-    &:hover {
-      background-color: #999;
-    }
-  }
 }
