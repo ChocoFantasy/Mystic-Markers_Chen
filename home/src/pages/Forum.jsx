@@ -116,7 +116,7 @@ const Forum = () => {
                       />
                       <button className="search-button" onClick={handleSearch}>
                         <img
-                          src="../public/images/Forum/search-icon.svg"
+                          src="../public/images/Forum/iconamoon_search.svg"
                           alt="搜尋"
                         />
                       </button>

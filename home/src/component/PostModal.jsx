@@ -17,12 +17,13 @@ const PostModal = ({ isOpen, onClose }) => {
 
         {/* 帳號與頭像 */}
         <div className="user-info">
-          <img src="../images/flowershop/icon-ig.svg" alt="頭像" class="avatar"/>
+          <img src="../images/Forum/carbon_user-avatar-filled.svg" alt="頭像" class="avatar"/>
           <span id="userName">您的帳號名稱</span>
         </div>
 
         {/* 分類選單 */}
-        <label htmlFor="boardSelect">選擇分類看板：</label>
+        <div id="board-bar">
+        <label htmlFor="boardSelect">分類看板：</label>
         <select id="boardSelect">
           <option value="urbantale">都市傳說</option>
           <option value="adventure">廢墟探險</option>
@@ -31,6 +32,8 @@ const PostModal = ({ isOpen, onClose }) => {
           <option value="Exorcise">驅邪收驚</option>
           <option value="collection">我的收藏</option>
         </select>
+        </div>
+       
 
         {/* 文章標題 */}
         <input type="text" placeholder="請輸入標題" id="postTitle" />
