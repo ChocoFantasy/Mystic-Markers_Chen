@@ -1580,3 +1580,155 @@ footer {
     }
   }
 }
+
+/* 常見問題 */
+
+.contact-body {
+  .faq-contact {
+    background: url("/path/to/noise-image.png") repeat;
+    padding: 40px 20px;
+  
+    .faq-section, .contact-section {
+      max-width: 1200px;
+      margin: 0 auto 50px;
+      text-align: center;
+  
+      h1 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: #00ff00;
+      }
+    }
+  
+    /* FAQ Section */
+    .faq-section {
+      .faq-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+  
+        button {
+          padding: 8px 15px;
+          font-size: 1rem;
+          background-color: transparent;
+          color: white;
+          border: 1px solid #00ff00;
+          cursor: pointer;
+          transition: all 0.3s;
+  
+          &:hover {
+            background-color: #00ff00;
+            color: black;
+          }
+        }
+      }
+  
+      .faq-items {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+  
+        .faq-item {
+          details {
+            background-color: #222;
+            border: 1px solid #00ff00;
+            padding: 10px;
+            border-radius: 5px;
+  
+            summary {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              font-size: 1.2rem;
+              color: white;
+              cursor: pointer;
+  
+              img {
+                width: 20px;
+                margin-left: 10px;
+              }
+            }
+  
+            p {
+              margin-top: 10px;
+              padding: 10px;
+              background-color: #333;
+              color: white;
+              border-radius: 3px;
+            }
+          }
+        }
+      }
+    }
+  
+    /* Contact Us Section */
+    .contact-section {
+      .contact-content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 20px;
+  
+        .contact-bubble {
+          flex: 1;
+          max-width: 48%;
+          background: url("/path/to/bubble-image.png") no-repeat center;
+          background-size: contain;
+          padding: 20px;
+          color: white;
+  
+          img {
+            width: 100%;
+            max-width: 150px;
+            margin: 0 auto 10px;
+          }
+  
+          .bubble-text {
+            p {
+              margin: 10px 0;
+            }
+          }
+        }
+  
+        .contact-form {
+          flex: 1;
+          max-width: 48%;
+  
+          p {
+            margin-bottom: 5px;
+            color: white;
+          }
+  
+          input, textarea {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #222;
+            color: white;
+            border: 1px solid #00ff00;
+            border-radius: 3px;
+          }
+  
+          button {
+            width: 100%;
+            padding: 10px;
+            background-color: #00ff00;
+            color: black;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: all 0.3s;
+  
+            &:hover {
+              background-color: white;
+              color: black;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+}
