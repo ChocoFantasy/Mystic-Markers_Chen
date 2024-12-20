@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Navbar from "../component/Navbar";
+import Navbar from "../component/Navbar"; //Navbar
 import "../style.scss";
 import ArticleList from "../component/ArticleList"; // 引入 ArticleList 組件
-import articles from "../js/articlesData";
+import articles from "../js/articlesData"; //引入文章資料
 import PostModal from "../component/PostModal"; // 引入彈出視窗組件
 
 const Forum = () => {

@@ -1,4 +1,9 @@
 import React, { useState } from "react";
+import Navbar from "../component/Navbar";
+import Story from "./Storys";
+import Map from "./Map";
+import Forum from "./Forum";
+import { Link } from "react-router-dom";
 import "../style.scss";
 
 const Contact = () => {
@@ -64,64 +69,105 @@ const Contact = () => {
   };
 
   return (
-    <div className="contact-body">
-      <div className="faq-contact">
-        {/* FAQ Section */}
-        <div className="faq-section">
-          <h1>常見問題</h1>
-          <div className="faq-buttons">
-            <button onClick={() => setCurrentTab("account")}>帳號相關</button>
-            <button onClick={() => setCurrentTab("content")}>內容發布</button>
-            <button onClick={() => setCurrentTab("safety")}>規範與安全</button>
+    <>
+      <div className="contact-body">
+        {/* 頁面橫幅 */}
+        <section id="banner">
+          <Navbar />
+        </section>
+
+        <div className="faq-contact">
+          {/* FAQ Section */}
+          <div className="faq-section">
+            <h1>常見問題</h1>
+            <div className="faq-buttons">
+              <button onClick={() => setCurrentTab("account")}>帳號相關</button>
+              <button onClick={() => setCurrentTab("content")}>內容發布</button>
+              <button onClick={() => setCurrentTab("safety")}>
+                規範與安全
+              </button>
+            </div>
+            <div className="faq-items">
+              {faqContent[currentTab].map((item, index) => (
+                <div className="faq-item" key={index}>
+                  <details>
+                    <summary>
+                      {item.question}
+                      <img src="../images/Contact/arrow2.svg" alt="下拉符號" />
+                    </summary>
+                    <p>{item.answer}</p>
+                  </details>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="faq-items">
-            {faqContent[currentTab].map((item, index) => (
-              <div className="faq-item" key={index}>
-                <details>
-                  <summary>
-                    {item.question}
-                    <img src="/path/to/icon.png" alt="下拉符號" />
-                  </summary>
-                  <p>{item.answer}</p>
-                </details>
+
+          {/* Contact Us Section */}
+          <div className="contact-section">
+            <h1>聯絡我們</h1>
+            <div className="contact-content">
+              <div className="contact-right">
+                <div className="contact-bubble">
+                  <img src="../images/Contact/Union.svg" alt="人物圖片" />
+                  <div className="bubble-text">
+                    <p>
+                      <strong>E-mail:</strong> mystiocmarkers@google.com
+                    </p>
+                    <p>
+                      <strong>電話:</strong> 02-412-8869
+                    </p>
+                    <p>
+                      <strong>聯絡時間:</strong> 週一至週日 09:30 - 18:30
+                    </p>
+                  </div>
+                </div>
+                <img
+                  className="person-image"
+                  src="../images/Contact/Frame71.png"
+                  alt="人物圖片"
+                />
               </div>
-            ))}
+
+              <form className="contact-form">
+                <p>姓名:</p>
+                <input type="text" placeholder="您的姓名" />
+                <p>E-mail:</p>
+                <input type="email" placeholder="您的電子郵件" />
+                <p>主旨:</p>
+                <input type="text" placeholder="標題" />
+                <p>內容:</p>
+                <textarea placeholder="您的訊息"></textarea>
+                <button type="submit">送出</button>
+              </form>
+            </div>
           </div>
         </div>
 
-        {/* Contact Us Section */}
-        <div className="contact-section">
-          <h1>聯絡我們</h1>
-          <div className="contact-content">
-            <div className="contact-bubble">
-              <img src="/path/to/character-image.png" alt="人物圖片" />
-              <div className="bubble-text">
-                <p>
-                  <strong>E-mail:</strong> mystiocmarkers@google.com
-                </p>
-                <p>
-                  <strong>電話:</strong> 02-412-8869
-                </p>
-                <p>
-                  <strong>聯絡時間:</strong> 週一至週日 09:30 - 18:30
-                </p>
-              </div>
+        {/* 頁尾區 */}
+        <footer>
+          <div className="content">
+            <div className="left">
+              <ul className="link">
+                <li>
+                  <Link to="/">首頁</Link>
+                </li>
+                <li>
+                  <Link to="/Story">怪奇博物館</Link>
+                </li>
+                <li>
+                  <Link to="/Map">靈異導航</Link>
+                </li>
+                <li>
+                  <Link to="/Forum">鬼影探索</Link>
+                </li>
+              </ul>
+              <small>&copy; 2024 Mystic Markers. All Rights Reserved.</small>
             </div>
-            <form className="contact-form">
-              <p>姓名:</p>
-              <input type="text" placeholder="您的姓名" />
-              <p>E-mail:</p>
-              <input type="email" placeholder="您的電子郵件" />
-              <p>主旨:</p>
-              <input type="text" placeholder="標題" />
-              <p>內容:</p>
-              <textarea placeholder="您的訊息"></textarea>
-              <button type="submit">送出</button>
-            </form>
+            <img src="/images/LOGO_footer.svg" alt="神秘座標" />
           </div>
-        </div>
+        </footer>
       </div>
-    </div>
+    </>
   );
 };
 

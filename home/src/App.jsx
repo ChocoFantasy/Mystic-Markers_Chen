@@ -1,4 +1,4 @@
-import "./style.scss";
+
 // import "../css/style.css";
 import "./style.scss";
 import Navbar from "./component/Navbar";

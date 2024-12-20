@@ -201,13 +201,11 @@ textarea {
 /* 重置字體 */
 body {
   position: relative;
-  position: relative;
   font-family: "Noto Sans TC";
   /* 系統預設的無襯線字 */
   font-size: 100%;
   line-height: 1.5;
   background-color: #333;
-  cursor: none;
   cursor: none;
 }
 
@@ -239,9 +237,7 @@ img {
 
 /* 重置連接 */
 /* 基本超連結樣式 */
-/* 基本超連結樣式 */
 a {
-  cursor: none;
   cursor: none;
   display: block;
   text-decoration: none;
@@ -250,6 +246,7 @@ a {
 
 /* Menu */
 .Topbar {
+  position: relative;
   margin: 0;
   margin-top: 0;
   width: 100%;
@@ -258,6 +255,8 @@ a {
   padding: 10px 0px;
   align-items: flex-end;
   justify-content: space-between;
+  overflow: visible;
+  z-index: 999;
 }
 
 .logo {
@@ -286,6 +285,154 @@ a {
   padding: 0;
   align-items: center;
   margin-left: 115px;
+  /* 整體視窗背景遮罩 */
+  /* 主視窗 */
+  /* 關閉按鈕 (叉叉) */
+  /* 表單容器 */
+  /* 輸入框 */
+  /* 按鈕樣式 */
+  /* 登入按鈕 */
+  /* 註冊按鈕 */
+  /* 訊息文字 */
+  /* 密碼顯示文字 */
+}
+.Topbar-right .modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  /* 半透明深色背景 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.Topbar-right .modal {
+  background: #2A2A2A;
+  /* 深灰色背景 */
+  border-radius: 12px;
+  width: 400px;
+  padding: 30px 25px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+  text-align: center;
+  font-family: "Arial", sans-serif;
+}
+.Topbar-right .close-btn {
+  position: absolute;
+  top: -5px;
+  right: -200px;
+  background: transparent;
+  border: none;
+  font-size: 32px;
+  font-weight: bold;
+  color: #acff6c;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.Topbar-right .close-btn:hover {
+  color: #B595FF;
+  /* 懸停時變紫色 */
+}
+.Topbar-right .title-login {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  /* LOGO 圖片  */
+  /* 標題 */
+}
+.Topbar-right .title-login .login-LOGO {
+  width: 25%;
+}
+.Topbar-right .title-login h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #acff6c;
+  /* 螢光綠主色 */
+}
+.Topbar-right .form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 10px;
+}
+.Topbar-right .form-container input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #B595FF;
+  /* 淡紫色邊框 */
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+  background-color: #FFFFFF;
+  /* 白色背景 */
+  color: #2A2A2A;
+  /* 深灰色文字 */
+}
+.Topbar-right .form-container input:focus {
+  outline: none;
+  border-color: #acff6c;
+  /* 聚焦時變綠色 */
+}
+.Topbar-right button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.Topbar-right .login-btn {
+  background-color: #acff6c;
+  color: #2A2A2A;
+}
+.Topbar-right .login-btn:hover {
+  background-color: #95e05c;
+}
+.Topbar-right .register-btn {
+  background-color: #B595FF;
+  color: #FFFFFF;
+}
+.Topbar-right .register-btn:hover {
+  background-color: #9c7fdd;
+}
+.Topbar-right p {
+  font-size: 14px;
+  color: #FFFFFF;
+  /* 白色文字 */
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.Topbar-right p:hover {
+  color: #B595FF;
+  /* 紫色 */
+}
+.Topbar-right .password-display {
+  font-size: 16px;
+  color: #acff6c;
+  font-weight: bold;
+}
+.Topbar-right .welcome-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.Topbar-right .welcome-container span {
+  color: white;
+}
+.Topbar-right .welcome-container .auth-btn {
+  background-color: #555;
+  padding: 5px 5px;
+  border: none;
+  cursor: pointer;
+}
+.Topbar-right .welcome-container .auth-btn:hover {
+  background-color: #777;
 }
 
 .member {
@@ -309,63 +456,152 @@ a {
   border-right: #B595FF 1px solid;
 }
 
-.navigation {
-  width: 277px;
+.navigation-1 {
+  width: 175px;
   display: flex;
+  align-items: center;
+  /* 會員圖示 */
 }
-.navigation #Group {
+.navigation-1 #Group {
   margin-right: 20px;
-  width: 30px;
+  width: 26px;
 }
-.navigation #news {
+.navigation-1 #Group .group-info {
+  position: absolute;
+  top: 50px;
+  background-color: #444;
+  padding: 10px;
+  border-radius: 5px;
+}
+.navigation-1 #Group .group-info p {
+  color: white;
+  margin: 0 0 10px;
+}
+.navigation-1 #Group .group-info .auth-btn {
+  background-color: #777;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+}
+.navigation-1 #Group .group-info .auth-btn:hover {
+  background-color: #999;
+}
+.navigation-1 #news {
   margin-right: 20px;
   width: 24px;
 }
-.navigation #menu {
-  width: 54px;
-  margin-left: 15px;
+.navigation-1 .navbar {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  overflow: visible;
+  /* 避免內容被裁切 */
+  z-index: 10;
+  /* 確保位於較前位置 */
 }
-
-/* 下面指令 */
-/* 定義色彩 */
-:root {
-  --primary-green: #acff6c;
-  --Neutral-grey: #b3b3b3;
-  --Neutral-Black: #2a2a2a;
-  --Neutral-White: #ffffff;
+.navigation-1 .navbar .hamburger {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
-
-body {
-  margin: 0;
-  padding: 0;
-  overflow: auto;
-  overflow: auto;
-  background-color: var(--Neutral-Black);
-  color: #ffffff;
-  font-family: "Noto Sans TC", sans-serif;
+.navigation-1 .navbar .hamburger .bar {
+  display: block;
+  width: 24px;
+  height: 3px;
+  background-color: #FFFFFF;
+  margin: 5px auto;
+  transform: transform 0.35s opacity 0.35s;
 }
-
-.top-bar {
+.navigation-1 .navbar .hamburger.is-active .bar:nth-child(1) {
+  transform: rotate(45deg) translateY(6px) translateX(5px);
+}
+.navigation-1 .navbar .hamburger.is-active .bar:nth-child(2) {
+  opacity: 0;
+}
+.navigation-1 .navbar .hamburger.is-active .bar:nth-child(3) {
+  transform: rotate(-45deg) translateY(-6px) translateX(5px);
+}
+.navigation-1 .navbar .navigation {
+  display: none;
+  justify-content: center;
+  position: absolute;
+  top: 30px;
+  /* 選單顯示在按鈕下方 */
+  padding: 60px;
+  border-radius: 5%;
+  animation: hide 2s both;
+  background: linear-gradient(to bottom, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0.3) 100%);
+}
+.navigation-1 .navbar .navigation.show {
+  display: flex;
+  animation: show 1s both;
+}
+.navigation-1 .navbar .navigation .menu {
+  display: flex;
+  flex-direction: column;
+  font-family: "Noto Sans TC";
+  font-size: 26px;
+  font-weight: 1000;
+  list-style: none;
+  /* 移除預設項目符號 */
+}
+.navigation-1 .navbar .navigation .menu li {
+  position: relative;
+  margin-bottom: 20px;
+  /* 每個項目間距 */
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 30px;
 }
-
-.nav-buttons {
-  display: flex;
-  gap: 20px;
+.navigation-1 .navbar .navigation .menu li::before {
+  content: "";
+  position: absolute;
+  left: -1.5em;
+  /* 調整小圓點的水平位置 */
+  width: 0.3em;
+  /* 圓點大小 */
+  height: 0.3em;
+  background-color: #acff6c;
+  border-radius: 25%;
+  z-index: 1;
+  transition: opacity 0.3s, transform 0.3s;
+  /* 添加動畫效果 */
 }
-
-.nav-button {
-  color: var(--primary-green);
-  border: none;
-  background: none;
-  font-size: 18px;
-  letter-spacing: 2.7px;
+.navigation-1 .navbar .navigation .menu li a {
+  text-decoration: none;
+  color: #fff;
+  position: relative;
+  transition: color 0.3s;
 }
-.nav-button div {
-  display: flex;
+.navigation-1 .navbar .navigation .menu li a:hover {
+  color: #fff;
+  /* 保持文字顏色不變 */
+}
+.navigation-1 .navbar .navigation .menu li a::after {
+  content: "";
+  position: absolute;
+  left: -1.5em;
+  /* 從項目符號開始 */
+  top: calc(50% - 4px);
+  /* 讓線條垂直居中並稍微調整覆蓋 垂直置中 */
+  width: calc(100% + 3em);
+  /* 覆蓋文字範圍，包含符號 */
+  height: 0.3em;
+  background-color: #acff6c;
+  transform: scaleX(0);
+  transform-origin: left;
+  /* 從左到右展開 */
+  transition: transform 0.3s;
+  border-radius: 4px;
+  z-index: 10;
+  /* 確保畫線在符號上方 */
+}
+.navigation-1 .navbar .navigation .menu li a:hover::after {
+  transform: scaleX(1);
+}
+.navigation-1 .navbar .navigation .menu li a.active a::after {
+  transform: scaleX(1);
 }
 
 /*HOME  */
@@ -854,6 +1090,9 @@ a:hover ~ #custom-cursor {
   }
 }
 footer {
+  position: relative;
+  z-index: 2;
+  /* 確保頁尾高於圖片 */
   display: inline-block;
   width: 100%;
   height: 350px;
@@ -974,4 +1213,532 @@ footer .content .left .link li a:hover {
   100% {
     color: #acff6c;
   }
+}
+.forum-body {
+  background-color: #2A2A2A;
+  color: #FFFFFF;
+  margin: 0 115px;
+  padding: 20px;
+  font-weight: 600;
+}
+.forum-body .forum-container {
+  padding: 20px 0;
+}
+.forum-body .forum-layout {
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  /* 網格間隙*/
+}
+.forum-body .sidebar {
+  width: 20%;
+}
+.forum-body .sidebar .sidebar-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.forum-body .sidebar .category-board {
+  border: 1.5px solid #B3B3B3;
+  border-radius: 5px;
+  padding: 44px;
+}
+.forum-body .sidebar .category-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.forum-body .sidebar .category-item {
+  padding: 8px 15px;
+  margin: 5px 0;
+  color: #acff6c;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 8px;
+}
+.forum-body .sidebar .category-item div {
+  display: flex;
+  justify-content: center;
+}
+.forum-body .sidebar .category-item div img {
+  width: 24px;
+  height: 24px;
+}
+.forum-body .sidebar .category-item div p {
+  margin-left: 12px;
+  font-size: 18px;
+}
+.forum-body .sidebar .category-item:hover {
+  background-color: #B595FF;
+  color: #acff6c;
+}
+.forum-body .ad-section {
+  aspect-ratio: 1/2;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.forum-body .main-content {
+  width: 80%;
+  border: 1.5px solid #B3B3B3;
+  border-radius: 5px;
+  padding: 20px;
+}
+.forum-body .top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+.forum-body .nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.forum-body .nav-buttons div {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.forum-body .nav-buttons div:hover {
+  background-color: #B595FF;
+}
+.forum-body .nav-buttons div:hover p {
+  color: #2A2A2A;
+}
+.forum-body .nav-buttons div.active {
+  background-color: #d8b4f8;
+}
+.forum-body .nav-buttons div img {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+.forum-body .nav-buttons div .nav-button {
+  color: #acff6c;
+  font-size: 18px;
+  border: none;
+  background: none;
+  letter-spacing: 2.7px;
+}
+
+.right-bar {
+  display: flex;
+}
+.right-bar .search-bar {
+  display: flex;
+  align-items: center;
+  border: 2px solid #acff6c;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 40px;
+}
+.right-bar .search-bar .search-input {
+  flex: 1;
+  padding: 0 12px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #2A2A2A;
+  height: 100%;
+  box-sizing: border-box;
+}
+.right-bar .search-bar .search-input::placeholder {
+  color: #a0a0a0;
+}
+.right-bar .search-bar .search-button {
+  background-color: #acff6c;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 100%;
+  padding: 0 8px;
+  cursor: pointer;
+}
+.right-bar .search-bar .search-button .search-icon {
+  width: 20px;
+  height: 20px;
+}
+.right-bar .search-bar .search-button:hover {
+  background-color: #9fe75e;
+}
+
+.article-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.article-card {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  border-bottom: 1px solid #B3B3B3;
+}
+
+.article-content {
+  flex: 1;
+}
+
+.article-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.author-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.author-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.article-title {
+  color: #acff6c;
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.article-preview {
+  color: #B3B3B3;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+
+.interaction-bar {
+  display: flex;
+  gap: 20px;
+}
+
+.interaction-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #FFFFFF;
+}
+
+.article-Graphics-text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.article-Graphics-text .left {
+  flex: 1;
+  padding-right: 20px;
+}
+.article-Graphics-text .right {
+  flex-shrink: 0;
+  width: 85px;
+}
+.article-Graphics-text .article-image {
+  width: 100%;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+@media (max-width: 991px) {
+  .forum-layout {
+    flex-direction: column;
+  }
+  .sidebar,
+  .main-content {
+    width: 100%;
+  }
+  .search-bar {
+    width: 100%;
+    max-width: 300px;
+  }
+  .article-card {
+    flex-direction: column;
+  }
+  .article-image {
+    width: 100%;
+    height: auto;
+  }
+}
+/* 撰寫文章  */
+#postModal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#postModal .modal-content {
+  background: #2A2A2A;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: left;
+}
+#postModal .modal-content .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  color: #aaa;
+  cursor: pointer;
+}
+#postModal .modal-content .close-btn:hover {
+  color: #000;
+}
+#postModal .modal-content .user-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+#postModal .modal-content .user-info .avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+#postModal .modal-content .user-info #userName {
+  font-size: 16px;
+  font-weight: bold;
+}
+#postModal .modal-content #board-bar {
+  display: flex;
+}
+#postModal .modal-content #board-bar #boardSelect {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+#postModal .modal-content #postTitle,
+#postModal .modal-content #postContent {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 8px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+#postModal .modal-content #postTitle#postContent,
+#postModal .modal-content #postContent#postContent {
+  height: 120px;
+  resize: none;
+}
+#postModal .modal-content .media-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+#postModal .modal-content .media-buttons button {
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#postModal .modal-content .media-buttons button:hover {
+  background-color: #0056b3;
+}
+#postModal .modal-content .action-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+#postModal .modal-content .action-buttons button {
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#postModal .modal-content .action-buttons button:hover {
+  background-color: #0056b3;
+}
+
+/* 常見問題 */
+.contact-body {
+  background: url("../images/Contact/雜訊3.png") repeat;
+}
+.contact-body .faq-contact {
+  padding: 40px 20px;
+  /* FAQ Section */
+  /* 聯絡我們 */
+}
+.contact-body .faq-contact .faq-section,
+.contact-body .faq-contact .contact-section {
+  max-width: 1200px;
+  margin: 0 auto 50px;
+  text-align: center;
+  position: relative;
+  /* 確保可以使用絕對定位 */
+  z-index: 2;
+  /* 層級設置，確保在 footer 上層 */
+}
+.contact-body .faq-contact .faq-section h1,
+.contact-body .faq-contact .contact-section h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #acff6c;
+}
+.contact-body .faq-contact .faq-section .faq-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.contact-body .faq-contact .faq-section .faq-buttons button {
+  padding: 12px 26px;
+  font-size: 1rem;
+  background-color: transparent;
+  color: white;
+  border: 1px solid #acff6c;
+  cursor: pointer;
+  transition: all 0.3s;
+  border-radius: 30px;
+}
+.contact-body .faq-contact .faq-section .faq-buttons button:hover {
+  background-color: #acff6c;
+  color: black;
+}
+.contact-body .faq-contact .faq-section .faq-items {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.contact-body .faq-contact .faq-section .faq-items .faq-item details {
+  border-bottom: 1px solid #acff6c;
+  padding: 10px;
+}
+.contact-body .faq-contact .faq-section .faq-items .faq-item details summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2rem;
+  color: white;
+  cursor: pointer;
+}
+.contact-body .faq-contact .faq-section .faq-items .faq-item details summary img {
+  width: 20px;
+  margin-left: 10px;
+}
+.contact-body .faq-contact .faq-section .faq-items .faq-item details p {
+  margin-top: 10px;
+  padding: 10px;
+  color: white;
+  border-radius: 3px;
+}
+.contact-body .faq-contact .contact-section {
+  position: relative;
+  padding: 50px 15px;
+  overflow: hidden;
+  /* 防止元素影響滾動條 */
+  min-height: 100vh;
+  /* 確保佔滿可視區高度 */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.contact-body .faq-contact .contact-section .contact-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  /* 人物圖片 */
+}
+.contact-body .faq-contact .contact-section .contact-content .contact-bubble {
+  position: absolute;
+  top: 50px;
+  left: 200px;
+  /* 微調位置 */
+  z-index: 3;
+  overflow: visible;
+  flex: 1 1 300px;
+  width: 300px;
+}
+.contact-body .faq-contact .contact-section .contact-content .contact-bubble img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* 確保圖片居中 */
+  z-index: 1;
+  opacity: 0.9;
+  width: 100%;
+  margin: 0 auto 10px;
+}
+.contact-body .faq-contact .contact-section .contact-content .contact-bubble .bubble-text {
+  position: relative;
+  /* 設置文字區塊為相對定位 */
+  z-index: 2;
+  /* 設置文字區塊層級高於圖片 */
+  padding: 20px;
+  border-radius: 15px;
+  color: white;
+}
+.contact-body .faq-contact .contact-section .contact-content .person-image {
+  position: absolute;
+  /* 絕對定位 */
+  bottom: -90px;
+  /* 設定到 footer 下方一層 */
+  left: 0%;
+  z-index: 1;
+  /* 層級設置低於 footer */
+  width: 400px;
+  /* 圖片大小 */
+  opacity: 0.9;
+}
+.contact-body .faq-contact .contact-section .contact-content .contact-form {
+  flex: 1;
+  max-width: 50%;
+}
+.contact-body .faq-contact .contact-section .contact-content .contact-form p {
+  margin-bottom: 5px;
+  color: white;
+}
+.contact-body .faq-contact .contact-section .contact-content .contact-form input,
+.contact-body .faq-contact .contact-section .contact-content .contact-form textarea {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #2A2A2A;
+  color: #FFFFFF;
+  border: 1px solid #acff6c;
+  border-radius: 20px;
+}
+.contact-body .faq-contact .contact-section .contact-content .contact-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #acff6c;
+  color: #2A2A2A;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.contact-body .faq-contact .contact-section .contact-content .contact-form button:hover {
+  background-color: #FFFFFF;
+  color: #2A2A2A;
 }/*# sourceMappingURL=style.css.map */
