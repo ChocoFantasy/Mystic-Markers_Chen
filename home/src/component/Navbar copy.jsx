@@ -68,19 +68,11 @@ function Navbar() {
             </div>
           ) : (
             <div className="auth-buttons">
-              <a
-                href="#"
-                onClick={() => setIsAuthOpen(true)}
-                className="auth-btn"
-              >
+              <a href="#" onClick={() => setIsAuthOpen(true)} className="auth-btn">
                 登入
               </a>
               |
-              <a
-                href="#"
-                onClick={() => setIsAuthOpen(true)}
-                className="auth-btn"
-              >
+              <a href="#" onClick={() => setIsAuthOpen(true)} className="auth-btn">
                 註冊
               </a>
             </div>
@@ -95,9 +87,9 @@ function Navbar() {
         </div>
       </nav>
       {/* 通知/會員管理/MENU */}
-      <nav className="nav-wrapper">
+      <nav className="navigation-1">
         <a href="#news">
-          <img id="news" src="/images/news.svg" alt="news" />
+          <img id="news" src="/images/news.png" alt="news" />
         </a>
         <a href="#Group">
           <img
