@@ -92,9 +92,11 @@ const Contact = () => {
                 <div className="faq-item" key={index}>
                   <details>
                     <summary>
+                      {/* 問題 */}
                       {item.question}
                       <img src="../images/Contact/arrow2.svg" alt="下拉符號" />
                     </summary>
+                    {/* 答案 */}
                     <p>{item.answer}</p>
                   </details>
                 </div>
@@ -102,7 +104,7 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Contact Us Section */}
+          {/* 聯絡我們 */}
           <div className="contact-section">
             <h1>聯絡我們</h1>
             <div className="contact-content">

@@ -11,22 +11,35 @@ const Forum = () => {
   const [filteredResults, setFilteredResults] = useState([]);
   const dummyData = [
     { title: "民雄鬼屋" },
-    { title: "荒廢" },
-    { title: "噩夢" },
-    { title: "SCP" },
+    { title: "荒廢城堡" },
+    { title: "恐怖噩夢" },
+    { title: "SCP-173" },
+    { title: "民雄的傳說" },
   ];
-
-  const handleSearch = () => {
-    if (searchValue.trim() === "") return; // 空值不搜尋
-    const results = dummyData.filter((item) =>
-      item.title.includes(searchValue)
-    );
-    setFilteredResults(results);
+  // 搜尋函式
+  const handleSearch = (value) => {
+    const searchQuery = value.trim().toLowerCase();
+    if (searchQuery === "") {
+      setFilteredResults([]); // 搜尋欄清空時，不顯示任何結果
+    } else {
+      const results = dummyData.filter((item) =>
+        item.title.toLowerCase().includes(searchQuery)
+      );
+      setFilteredResults(results);
+    }
   };
 
+   // 即時處理搜尋輸入
+   const handleInputChange = (e) => {
+    const value = e.target.value;
+    setSearchValue(value);
+    handleSearch(value); // 即時搜尋
+  };
+
+  // 按下 Enter 時觸發搜尋
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      handleSearch();
+      handleSearch(searchValue);
     }
   };
 
@@ -91,7 +104,7 @@ const Forum = () => {
                     { icon: "ooui_notice", label: "發文規則" },
                   ].map((item, index) => (
                     <div key={index}>
-                      <img
+                      <img  
                         src={`../public/images/Forum/${item.icon}.svg`}
                         alt={item.label}
                       />
@@ -111,10 +124,10 @@ const Forum = () => {
                         className="search-input"
                         placeholder="搜尋 民雄鬼屋"
                         value={searchValue}
-                        onChange={(e) => setSearchValue(e.target.value)}
+                        onChange={handleInputChange}
                         onKeyDown={handleKeyDown}
                       />
-                      <button className="search-button" onClick={handleSearch}>
+                      <button className="search-button" onClick={() => handleSearch(searchValue)}>
                         <img
                           src="../public/images/Forum/iconamoon_search.svg"
                           alt="搜尋"
@@ -130,7 +143,7 @@ const Forum = () => {
                           ))}
                         </ul>
                       ) : (
-                        <p>沒有找到相關結果。</p>
+                        searchValue && <p>沒有找到相關結果。</p> // 若無結果且搜尋欄不為空
                       )}
                     </div>
                   </div>
