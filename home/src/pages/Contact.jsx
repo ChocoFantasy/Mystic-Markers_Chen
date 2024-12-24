@@ -3,8 +3,9 @@ import Navbar from "../component/Navbar";
 import Story from "./Storys";
 import Map from "./Map";
 import Forum from "./Forum";
-import { Link } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
 import "../style.scss";
+import App from "../App";
 
 const Contact = () => {
   const [currentTab, setCurrentTab] = useState("account");
@@ -70,12 +71,10 @@ const Contact = () => {
 
   return (
     <>
-      <div className="contact-body">
-        {/* 頁面橫幅 */}
-        <section id="banner">
-          <Navbar />
-        </section>
-
+      <Routes>
+        <Route path="/" element={
+        <main className="contact-body">
+        <Navbar />
         <div className="faq-contact">
           {/* FAQ Section */}
           <div className="faq-section">
@@ -168,7 +167,14 @@ const Contact = () => {
             <img src="/images/LOGO_footer.svg" alt="神秘座標" />
           </div>
         </footer>
-      </div>
+        </main>
+      }
+      />
+        <Route path="/" element={<App />} />
+        <Route path="/Story" element={<Story />} />
+        <Route path="/Map" element={<Map />} />
+        <Route path="/Forum" element={<Forum />} />
+      </Routes>
     </>
   );
 };

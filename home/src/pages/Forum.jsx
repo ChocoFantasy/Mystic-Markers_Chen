@@ -4,6 +4,12 @@ import "../style.scss";
 import ArticleList from "../component/ArticleList"; // 引入 ArticleList 組件
 import articles from "../js/articlesData"; //引入文章資料
 import PostModal from "../component/PostModal"; // 引入彈出視窗組件
+import { Link, Route, Routes } from "react-router-dom";
+import Contact from "./Contact";
+import Story from "./Storys";
+import Map from "./Map";
+import App from "../App";
+
 
 const Forum = () => {
   // 搜尋相關邏輯
@@ -48,13 +54,10 @@ const Forum = () => {
 
   return (
     <>
-      {/* 頁面橫幅 */}
-      <section id="banner">
-        <Navbar />
-      </section>
-
-      {/* 主體 */}
-      <div className="forum-body">
+    <Navbar />
+<Routes>
+<Route path="/" element={
+      <main className="forum-body">
         <div className="forum-container">
           <div className="forum-layout">
             {/* 側邊欄位 */}
@@ -74,7 +77,7 @@ const Forum = () => {
                       <li key={index} className="category-item" role="listitem">
                         <div>
                           <img
-                            src={`../public/images/Forum/${item.icon}.svg`}
+                            src={`../images/Forum/${item.icon}.svg`}
                             alt={item.label}
                           />
                           <p>{item.label}</p>
@@ -94,7 +97,7 @@ const Forum = () => {
             </aside>
 
             {/* 主內容 */}
-            <main className="main-content">
+            <div className="main-content">
               <div className="top-bar">
                 {/* 按鈕欄 */}
                 <div className="nav-buttons">
@@ -166,10 +169,16 @@ const Forum = () => {
 
               {/* 文章列表 */}
               <ArticleList articles={articles} />
-            </main>
+            </div>
           </div>
         </div>
-      </div>
+        </main>
+      }
+      />
+        <Route path="/Story" element={<Story />} />
+        <Route path="/Map" element={<Map />} />
+        <Route path="/Contact" element={<Contact />} />
+      </Routes>
     </>
   );
 };
