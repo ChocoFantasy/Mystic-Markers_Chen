@@ -1,5 +1,6 @@
 const articles = [
   {
+    category: "都市傳說",
     authorName: "模糊獵人",
     authorAvatar: "../images/Forum/模糊獵人.svg",
     title: "親身經歷！那晚在荒廢的工廠聽見奇怪的低語聲",
@@ -15,6 +16,7 @@ const articles = [
     ]
   },
   {
+    category: "廢墟探險",
     authorName: "藤森月子",
     authorAvatar: "../images/Forum/藤森月子.svg",
     title: "[民雄鬼屋] 充滿傳說的一口古井！",
@@ -31,6 +33,7 @@ const articles = [
     ]
   },
   {
+    category: "恐怖獵奇",
     authorName: "光",
     authorAvatar: "../images/Forum/光.svg",
     title: "每次回老家過夜都會噩夢",
@@ -47,6 +50,7 @@ const articles = [
     ]
   },
   {
+    category: "恐怖作品",
     authorName: "轉空",
     authorAvatar: "../images/Forum/轉空.svg",
     title: "讓人著迷又微驚悚的SCP",
@@ -63,6 +67,7 @@ const articles = [
     ]
   },
   {
+    category: "驅邪收驚",
     authorName: "迷路的貓",
     authorAvatar: "../images/Forum/迷路的貓.svg",
     title: "鬼壓床還是被跟上了？求解！",
@@ -79,6 +84,7 @@ const articles = [
     ]
   },
   {
+    category: "都市傳說",
     authorName: "莉莉安",
     authorAvatar: "../public/images/Forum/莉莉安.svg",
     title: "鬼月半夜騎機車遇到「多出來的手」",
@@ -94,6 +100,7 @@ const articles = [
     ]
   },
   {
+    category: "都市傳說",
     authorName: "暗影守望者",
     authorAvatar: "../public/images/Forum/暗影守望者.svg",
     title: "公司廁所半夜傳來的低語聲……",
@@ -109,6 +116,7 @@ const articles = [
     ]
   },
   {
+    category: "都市傳說",
     authorName: "黑夜行者",
     authorAvatar: "../images/Forum/黑夜行者.svg",
     title: "深夜在山區遇見「沒有臉」的登山者",
@@ -124,6 +132,7 @@ const articles = [
     ]
   },
   {
+    category: "都市傳說",
     authorName: "模糊獵人",
     authorAvatar: "../images/Forum/模糊獵人2.svg",
     title: "親身經歷！那晚在荒廢的工廠聽見奇怪的低語聲",
@@ -139,6 +148,7 @@ const articles = [
     ]
   },
   {
+    category: "都市傳說",
     authorName: "模糊獵人",
     authorAvatar: "../images/Forum/模糊獵人3.svg",
     title: "親身經歷！那晚在荒廢的工廠聽見奇怪的低語聲",
