@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "../component/Navbar";
-import Story from "./Storys";
+import Story from "./Story";
 import Map from "./Map";
 import Forum from "./Forum";
 import { Link, Route, Routes } from "react-router-dom";

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import Navbar from "../component/Navbar"; //Navbar
 import "../style.scss";
 import ArticleList from "../component/ArticleList"; // 文章列表
@@ -6,32 +6,53 @@ import articlesData from "../js/articlesData"; // 原始文章資料
 import PostModal from "../component/PostModal"; // 發文彈窗組件
 import { Routes, Route } from "react-router-dom";
 import Contact from "./Contact";
-import Story from "./Storys";
+import Story from "./Story";
 import Map from "./Map";
 import App from "../App";
 
 const Forum = () => {
   const [articles, setArticles] = useState(articlesData); // 狀態：所有文章
-  const [sortedArticles, setSortedArticles] = useState(articles); // 排序後的文章
+  //const [sortedArticles, setSortedArticles] = useState(articles); // 排序後的文章
+  const [searchValue, setSearchValue] = useState(""); // 搜尋欄位
+  const [ascending, setAscending] = useState(true); // 排序狀態
   const [currentCategory, setCurrentCategory] = useState("所有看板"); // 狀態：當前分類
   const [isModalOpen, setModalOpen] = useState(false); // 狀態：發文彈窗是否開啟
+  
+  // 搜尋相關邏輯
+  // 搜尋過濾功能
+  const filteredArticles_search = useMemo(() => {
+    return articles.filter(
+      (article) =>
+        article.title.toLowerCase().includes(searchValue.toLowerCase()) // 根據標題搜尋
+    );
+  }, [searchValue, articles]);
 
-  // 熱門排序指令
-  const sortArticlesByPopularity = () => {
-    const sorted = [...articles].sort((a, b) => {
+  // 根據分類篩選文章
+  const filteredArticles_category = useMemo(() => {
+    return filteredArticles_search.filter((article) => {
+      if (currentCategory === "所有看板") return true; // 顯示所有文章
+      if (currentCategory === "我的收藏") return article.isFavorite; // 顯示收藏文章
+      return article.category === currentCategory; // 根據分類篩選文章
+    });
+  }, [filteredArticles_search, currentCategory]);
+
+  // 根據按讚數進行排序[熱門]
+  const sortedArticles = useMemo(() => {
+    return filteredArticles_category.sort((a, b) => {
       const aLikes = a.interactions.find((i) => i.altText === "like").count;
       const bLikes = b.interactions.find((i) => i.altText === "like").count;
-      return bLikes - aLikes;
+      return ascending ? aLikes - bLikes : bLikes - aLikes; // 升冪或降冪排序
     });
-    setSortedArticles(sorted);
+  }, [filteredArticles_category, ascending]);
+
+  // 搜尋輸入變化
+  const handleSearch = (e) => {
+    setSearchValue(e.target.value);
   };
 
-  // 最新排序
-  const sortArticlesByDate = () => {
-    const sorted = [...articles].sort(
-      (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-    );
-    setSortedArticles(sorted);
+  // 觸發排序方式的切換
+  const toggleSortOrder = () => {
+    setAscending((prevState) => !prevState); // 切換升冪和降冪
   };
 
   // 發文規則按鈕
@@ -40,13 +61,6 @@ const Forum = () => {
       "發文規則：\n1. 請保持友善與尊重。\n2. 禁止發表不當內容。\n3. 內容需與分類相關。"
     );
   };
-
-  // 根據分類篩選文章
-  const filteredArticles = articles.filter((article) => {
-    if (currentCategory === "所有看板") return true; // 顯示所有文章
-    if (currentCategory === "我的收藏") return article.isFavorite; // 顯示收藏文章
-    return article.category === currentCategory; // 根據分類篩選文章
-  });
 
   // 點擊分類按鈕時更改當前分類 (切換分類)
   const handleCategoryClick = (category) => {
@@ -70,44 +84,6 @@ const Forum = () => {
     setModalOpen(false); // 關閉彈窗
   };
 
-  // 搜尋相關邏輯
-  const [searchValue, setSearchValue] = useState("");
-  const [filteredResults, setFilteredResults] = useState([]);
-  const dummyData = [
-    { title: "民雄鬼屋" },
-    { title: "荒廢城堡" },
-    { title: "恐怖噩夢" },
-    { title: "SCP-173" },
-    { title: "民雄的傳說" },
-    { title: "民雄的傳說" },
-  ];
-  // 搜尋函式
-  const handleSearch = (value) => {
-    const searchQuery = value.trim().toLowerCase();
-    if (searchQuery === "") {
-      setFilteredResults([]); // 搜尋欄清空時，不顯示任何結果
-    } else {
-      const results = dummyData.filter((item) =>
-        item.title.toLowerCase().includes(searchQuery)
-      );
-      setFilteredResults(results);
-    }
-  };
-
-  // 即時處理搜尋輸入
-  const handleInputChange = (e) => {
-    const value = e.target.value;
-    setSearchValue(value);
-    handleSearch(value); // 即時搜尋
-  };
-
-  // 按下 Enter 時觸發搜尋
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      handleSearch(searchValue);
-    }
-  };
-
   return (
     <>
       <Navbar />
@@ -118,7 +94,7 @@ const Forum = () => {
             <main className="forum-body">
               <div className="forum-container">
                 <div className="forum-layout">
-                  {/* 側邊分類欄位 */}
+                  {/* 側邊分類欄位、篩選、廣告區 */}
                   <aside className="sidebar">
                     <div className="sidebar-content">
                       <nav className="category-board">
@@ -135,10 +111,14 @@ const Forum = () => {
                             <li
                               key={category.label}
                               className={`category-item ${
-                                currentCategory === category ? "active" : ""
+                                currentCategory === category.label
+                                  ? "active"
+                                  : ""
                               }`}
                               role="listitem"
-                              onClick={() => handleCategoryClick(category.label)}
+                              onClick={() =>
+                                handleCategoryClick(category.label)
+                              }
                             >
                               <div>
                                 <img
@@ -174,12 +154,12 @@ const Forum = () => {
                           {
                             icon: "mingcute_fire-fill",
                             label: "熱門",
-                            onClick: sortArticlesByPopularity,
+                            //onClick: sortArticlesByPopularity,
                           },
                           {
                             icon: "emojione-monotone_new-button",
                             label: "最新",
-                            onClick: sortArticlesByDate,
+                            //onClick: sortArticlesByDate,
                           },
                           {
                             icon: "ooui_notice",
@@ -209,34 +189,22 @@ const Forum = () => {
                         <div className="search-bar-container">
                           <div className="search-bar">
                             <input
-                              type="text"
+                              type="search"
                               className="search-input"
-                              placeholder="搜尋 民雄鬼屋"
+                              placeholder="搜尋文章"
                               value={searchValue}
-                              onChange={handleInputChange}
-                              onKeyDown={handleKeyDown}
+                              onChange={handleSearch}
                             />
                             <button
                               className="search-button"
-                              onClick={() => handleSearch(searchValue)}
+                              onClick={toggleSortOrder}
                             >
                               <img
                                 src="../public/images/Forum/iconamoon_search.svg"
                                 alt="搜尋"
                               />
+                              {ascending ? "按讚數升冪" : "按讚數降冪"}
                             </button>
-                          </div>
-                          {/* 搜尋結果 */}
-                          <div className="search-results">
-                            {filteredResults.length > 0 ? (
-                              <ul>
-                                {filteredResults.map((item, index) => (
-                                  <li key={index}>{item.title}</li>
-                                ))}
-                              </ul>
-                            ) : (
-                              searchValue && <p>沒有找到相關結果。</p> // 若無結果且搜尋欄不為空
-                            )}
                           </div>
                         </div>
 
@@ -258,7 +226,8 @@ const Forum = () => {
 
                     {/* 文章列表 */}
                     <ArticleList
-                      articles={filteredArticles} //文章資料
+                      articles={sortedArticles} // 排序並篩選後的文章資料
+                      // articles={filteredArticles} //文章資料
                       onFavorite={handleArticleFavorite} //傳遞收藏功能
                     />
 

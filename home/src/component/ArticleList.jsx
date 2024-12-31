@@ -78,7 +78,7 @@ const ArticleList = ({ articles, onFavorite }) => {
                   <div className="interaction-bar">
                      {interactions[index]?.map((interaction, idx) => (
                   
-                      <div className="interaction-item" key={`${article.id}-${interaction.altText}`}>
+                      <div className="interaction-item" key={`${interaction.altText}`}>
                         <a
                           href="#"
                           onClick={(e) => {

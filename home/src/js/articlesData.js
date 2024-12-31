@@ -14,7 +14,9 @@ const articles = [
         count: 1502, 
         altText: "like" },// 按讚數
       { icon: "../public/images/Forum/mynaui_message.svg", count: 465, altText: "message" },// 留言數
-      { icon: "../public/images/Forum/Forum_label.svg", count: 600, altText: "label" }, // 收藏數
+      { icon: "../public/images/Forum/Forum_label.svg", 
+        filledIcon: "../public/images/Forum/solar_ghost-outline.svg",
+        count: 600, altText: "label" }, // 收藏數
     ]
   },
   {
