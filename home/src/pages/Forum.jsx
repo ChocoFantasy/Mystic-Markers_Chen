@@ -2,32 +2,35 @@ import React, { useState, useMemo } from "react";
 import Navbar from "../component/Navbar"; //Navbar
 import "../style.scss";
 import ArticleList from "../component/ArticleList"; // 文章列表
+import ArticleView from "../component/ArticleView";
 import articlesData from "../js/articlesData"; // 原始文章資料
 import PostModal from "../component/PostModal"; // 發文彈窗組件
 import { Routes, Route } from "react-router-dom";
+
 import Contact from "./Contact";
 import Story from "./Story";
 import Map from "./Map";
-import App from "../App";
 
 const Forum = () => {
   const [articles, setArticles] = useState(articlesData); // 狀態：所有文章
-  //const [sortedArticles, setSortedArticles] = useState(articles); // 排序後的文章
   const [searchValue, setSearchValue] = useState(""); // 搜尋欄位
   const [ascending, setAscending] = useState(true); // 排序狀態
   const [currentCategory, setCurrentCategory] = useState("所有看板"); // 狀態：當前分類
   const [isModalOpen, setModalOpen] = useState(false); // 狀態：發文彈窗是否開啟
+  const [searchTriggered, setSearchTriggered] = useState(false); // 記錄是否已觸發搜尋
   
-  // 搜尋相關邏輯
-  // 搜尋過濾功能
+  // [搜尋]過濾功能，只有在按下搜尋按鈕後才觸發
   const filteredArticles_search = useMemo(() => {
-    return articles.filter(
-      (article) =>
-        article.title.toLowerCase().includes(searchValue.toLowerCase()) // 根據標題搜尋
-    );
-  }, [searchValue, articles]);
+    if (searchTriggered) {
+      return articles.filter(
+        (article) =>
+          article.title.toLowerCase().includes(searchValue.toLowerCase()) // 根據標題搜尋
+      );
+    }
+    return articles; // 沒有觸發搜尋時，顯示所有文章
+  }, [searchValue, articles, searchTriggered]);
 
-  // 根據分類篩選文章
+  // [分類]篩選文章
   const filteredArticles_category = useMemo(() => {
     return filteredArticles_search.filter((article) => {
       if (currentCategory === "所有看板") return true; // 顯示所有文章
@@ -36,38 +39,45 @@ const Forum = () => {
     });
   }, [filteredArticles_search, currentCategory]);
 
-  // 根據按讚數進行排序[熱門]
+  // [熱門]根據按讚數進行排序
   const sortedArticles = useMemo(() => {
+    
     return filteredArticles_category.sort((a, b) => {
       const aLikes = a.interactions.find((i) => i.altText === "like").count;
       const bLikes = b.interactions.find((i) => i.altText === "like").count;
       return ascending ? aLikes - bLikes : bLikes - aLikes; // 升冪或降冪排序
     });
-  }, [filteredArticles_category, ascending]);
+  }, [filteredArticles_category, ascending, searchTriggered]);
 
-  // 搜尋輸入變化
+  // [搜尋]輸入變化
   const handleSearch = (e) => {
     setSearchValue(e.target.value);
   };
 
-  // 觸發排序方式的切換
+  // [熱門]觸發排序方式的切換
   const toggleSortOrder = () => {
     setAscending((prevState) => !prevState); // 切換升冪和降冪
   };
 
-  // 發文規則按鈕
+   // [搜尋]按鈕觸發搜尋和排序
+   const handleSearchButtonClick = () => {
+    setSearchTriggered(true); // 觸發搜尋
+    toggleSortOrder(); // 切換排序
+  };
+
+  // [發文規則]按鈕
   const showPostingRules = () => {
     alert(
       "發文規則：\n1. 請保持友善與尊重。\n2. 禁止發表不當內容。\n3. 內容需與分類相關。"
     );
   };
 
-  // 點擊分類按鈕時更改當前分類 (切換分類)
+  // [分類]點擊分類按鈕時更改當前分類 
   const handleCategoryClick = (category) => {
     setCurrentCategory(category);
   };
 
-  // 點擊收藏按鈕時切換收藏狀態
+  // [分類]點擊收藏按鈕時切換收藏狀態
   const handleArticleFavorite = (id) => {
     setArticles((prevArticles) =>
       prevArticles.map((article) =>
@@ -78,7 +88,7 @@ const Forum = () => {
     );
   };
 
-  // 提交新文章時添加到文章列表
+  // [撰寫新文章]提交新文章時添加到文章列表
   const handleNewArticle = (newArticle) => {
     setArticles([newArticle, ...articles]); // 新文章加到最上面
     setModalOpen(false); // 關閉彈窗
@@ -154,7 +164,7 @@ const Forum = () => {
                           {
                             icon: "mingcute_fire-fill",
                             label: "熱門",
-                            //onClick: sortArticlesByPopularity,
+                            onClick:toggleSortOrder,
                           },
                           {
                             icon: "emojione-monotone_new-button",
@@ -197,13 +207,12 @@ const Forum = () => {
                             />
                             <button
                               className="search-button"
-                              onClick={toggleSortOrder}
+                              onClick={handleSearchButtonClick}
                             >
                               <img
                                 src="../public/images/Forum/iconamoon_search.svg"
                                 alt="搜尋"
                               />
-                              {ascending ? "按讚數升冪" : "按讚數降冪"}
                             </button>
                           </div>
                         </div>
@@ -227,7 +236,6 @@ const Forum = () => {
                     {/* 文章列表 */}
                     <ArticleList
                       articles={sortedArticles} // 排序並篩選後的文章資料
-                      // articles={filteredArticles} //文章資料
                       onFavorite={handleArticleFavorite} //傳遞收藏功能
                     />
 
@@ -245,6 +253,7 @@ const Forum = () => {
             </main>
           }
         />
+        <Route path="/article/:articleId" element={<ArticleView />} />
         <Route path="/Story" element={<Story />} />
         <Route path="/Map" element={<Map />} />
         <Route path="/Contact" element={<Contact />} />

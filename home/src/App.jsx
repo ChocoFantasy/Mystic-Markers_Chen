@@ -17,6 +17,7 @@ import Cursor from "./component/Cursor";
 import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import ArticleView from "./component/ArticleView"; 
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -261,7 +262,7 @@ const App = () => {
             </main>
           }
         />
-
+       <Route path="/article/:articleId" element={<ArticleView />} />
         <Route path="/Story" element={<Story />} />
         <Route path="/Map" element={<Map />} />
         <Route path="/Forum" element={<Forum />} />
