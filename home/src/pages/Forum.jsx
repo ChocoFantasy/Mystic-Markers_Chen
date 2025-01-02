@@ -1,4 +1,5 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo,useEffect } from "react";
+import { useParams } from "react-router-dom"; // 確保引入 useParams
 import Navbar from "../component/Navbar"; //Navbar
 import "../style.scss";
 import ArticleList from "../component/ArticleList"; // 文章列表
@@ -12,12 +13,20 @@ import Story from "./Story";
 import Map from "./Map";
 
 const Forum = () => {
+   const { category } = useParams(); // 接收首頁路由中的分類名稱
   const [articles, setArticles] = useState(articlesData); // 狀態：所有文章
   const [searchValue, setSearchValue] = useState(""); // 搜尋欄位
   const [ascending, setAscending] = useState(true); // 排序狀態
   const [currentCategory, setCurrentCategory] = useState("所有看板"); // 狀態：當前分類
   const [isModalOpen, setModalOpen] = useState(false); // 狀態：發文彈窗是否開啟
   const [searchTriggered, setSearchTriggered] = useState(false); // 記錄是否已觸發搜尋
+
+  // 首頁路由器更新用
+  useEffect(() => {
+    if (category) {
+      setCurrentCategory(decodeURIComponent(category)); // 動態更新分類
+    }
+  }, [category]);
   
   // [搜尋]過濾功能，只有在按下搜尋按鈕後才觸發
   const filteredArticles_search = useMemo(() => {

@@ -1612,15 +1612,16 @@ footer {
   .article-header {
     display: flex;
     flex-direction: column;
+    align-items: flex-start; /* 文字靠左對齊 */
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding-bottom: 1rem;
 
     .category-nav {
       display: flex;
-      justify-content: space-between !important; // 強制左右對齊
+      justify-content: space-between; 
+      width: 100%; /* 區塊填滿寬度 */
       align-items: center !important; // 確保垂直居中
       border-bottom: 1px solid rgba(255, 255, 255, 0.1); //水平線
-
 
       .category {
         font-size: 1rem;
@@ -1654,8 +1655,8 @@ footer {
 
     .author-info {
       display: flex;
+      align-items: center;
       gap: 1.5rem;
-      margin-bottom: 2rem;
 
       .author-avatar {
         width: 48px;
@@ -1683,6 +1684,13 @@ footer {
           .author-name {
             font-weight: 500;
             color: #ffffff;
+            display: flex;
+            align-items: center;
+          }
+          .post-date{
+            margin-left: 15px;
+            display: flex;
+            align-items: center;
           }
         }
       }
@@ -1700,11 +1708,11 @@ footer {
     }
 
     .article-image {
+      margin: 1rem 0;
       width: 100%;
       max-height: 500px;
       object-fit: cover;
       border-radius: 8px;
-      margin-bottom: 2rem;
     }
   }
 
@@ -1715,63 +1723,48 @@ footer {
     margin-bottom: 2rem;
 
     .tag {
-      background-color: rgba(76, 175, 80, 0.1);
-      color: $primary-green;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
+      color: $primary-purple;
+      padding: 0.5rem 0.5rem;
+      border-radius: 5px;
       font-size: 0.9rem;
-      border: 1px solid rgba(76, 175, 80, 0.3);
+      border: 1px solid $primary-purple;
 
       &:hover {
-        background-color: rgba(76, 175, 80, 0.2);
+        background-color: rgba(69, 41, 95, 0.4);
       }
     }
   }
 
   .interaction-bar {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: flex-start;
+    gap: 1rem; /* 控制每個圖標之間的間距 */
     padding: 1rem 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 
     .interaction-items {
-      display: flex;
-      gap: 2rem;
+      display: flex; 
+      gap:1rem;
     }
 
-    .interaction-item {
-      .interaction-button {
-        background: none;
-        border: none;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        color: #ffffff;
-
-        img {
-          width: 24px;
-          height: 24px;
-        }
-
-        &:hover {
-          opacity: 0.8;
-        }
-      }
+    .interaction-items a {
+      display: flex; 
+      align-items: center;
+      gap: 0.6rem; /* 圖標和數字的間距 */
     }
 
-    .share-button {
-      background-color: $primary-green;
-      color: white;
-      border: none;
-      padding: 0.5rem 1.5rem;
-      border-radius: 4px;
-      cursor: not-allowed;
-      opacity: 0.6;
+    .interaction-item img {
+      width: 24px; /* 圖標大小 */
+      height: 24px; /* 圖標大小 */
     }
+  
+    .interaction-item span {
+      font-size: 16px; /* 調整文字大小 */
+      color: #ffffff;
+    }
+
   }
 
   .comments-section {

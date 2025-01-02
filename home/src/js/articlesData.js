@@ -2,6 +2,7 @@ const articles = [
   {
     id:1,
     category: "都市傳說",
+    commentCount: 0,
     authorName: "模糊獵人",
     authorAvatar: "../images/Forum/模糊獵人.svg",
     title: "親身經歷！那晚在荒廢的工廠聽見奇怪的低語聲",
@@ -13,14 +14,15 @@ const articles = [
         filledIcon: "../public/images/Forum/solar_ghost-outline.svg",
         count: 1502, 
         altText: "like" },// 按讚數
-      { icon: "../public/images/Forum/mynaui_message.svg", count: 465, altText: "message" },// 留言數
+      { icon: "../public/images/Forum/mynaui_message.svg", count: 0, altText: "message" },// 留言數
       { icon: "../public/images/Forum/Forum_label.svg", 
-        filledIcon: "../public/images/Forum/solar_ghost-outline.svg",
+        filledIcon: "../public/images/Forum/MapCollect.png",
         count: 600, altText: "label" }, // 收藏數
     ]
   },
   {
     id:2,
+    commentCount: 0,
     category: "廢墟探險",
     authorName: "藤森月子",
     authorAvatar: "../images/Forum/藤森月子.svg",
@@ -33,12 +35,15 @@ const articles = [
         filledIcon: "../public/images/Forum/solar_ghost-outline.svg",
         count: 102, 
         altText: "like" },
-      { icon: "../public/images/Forum/mynaui_message.svg", count: 56, altText: "message" },
-      { icon: "../public/images/Forum/Forum_label.svg", count: 78, altText: "label" }
+      { icon: "../public/images/Forum/mynaui_message.svg", count: 0, altText: "message" },
+      { icon: "../public/images/Forum/Forum_label.svg", 
+        filledIcon: "../public/images/Forum/MapCollect.png",
+        count: 78, altText: "label" }
     ]
   },
   {
     id:3,
+    commentCount: 0,
     category: "恐怖獵奇",
     authorName: "光",
     authorAvatar: "../images/Forum/光.svg",
@@ -51,13 +56,16 @@ const articles = [
         filledIcon: "../public/images/Forum/solar_ghost-outline.svg",
         count: 304, 
         altText: "like" },
-      { icon: "../public/images/Forum/mynaui_message.svg", count: 15, altText: "message" },
-      { icon: "../public/images/Forum/Forum_label.svg", count: 2, altText: "label" }
+      { icon: "../public/images/Forum/mynaui_message.svg", count: 0, altText: "message" },
+      { icon: "../public/images/Forum/Forum_label.svg", 
+        count: 2, altText: "label" }
     ]
   },
   {
     id:4,
+    commentCount: 0,
     category: "恐怖作品",
+    commentCount: 465,
     authorName: "轉空",
     authorAvatar: "../images/Forum/轉空.svg",
     title: "讓人著迷又微驚悚的SCP",
@@ -69,12 +77,15 @@ const articles = [
         filledIcon: "../public/images/Forum/solar_ghost-outline.svg",
         count: 62, 
         altText: "like" },
-      { icon: "../public/images/Forum/mynaui_message.svg", count: 65, altText: "message" },
-      { icon: "../public/images/Forum/Forum_label.svg", count: 10, altText: "label" }
+      { icon: "../public/images/Forum/mynaui_message.svg", count: 0, altText: "message" },
+      { icon: "../public/images/Forum/Forum_label.svg", 
+        filledIcon: "../public/images/Forum/MapCollect.png",
+        count: 78, altText: "label" }
     ]
   },
   {
     id:5,
+    commentCount: 0,
     category: "驅邪收驚",
     authorName: "迷路的貓",
     authorAvatar: "../images/Forum/迷路的貓.svg",
@@ -87,12 +98,15 @@ const articles = [
         filledIcon: "../public/images/Forum/solar_ghost-outline.svg",
         count: 82, 
         altText: "like" },
-      { icon: "../public/images/Forum/mynaui_message.svg", count: 5, altText: "message" },
-      { icon: "../public/images/Forum/Forum_label.svg", count: 60, altText: "label" }
+      { icon: "../public/images/Forum/mynaui_message.svg", count: 0, altText: "message" },
+      { icon: "../public/images/Forum/Forum_label.svg", 
+        filledIcon: "../public/images/Forum/MapCollect.png",
+        count: 60, altText: "label" }
     ]
   },
   {
     id:6,
+    commentCount: 0,
     category: "都市傳說",
     authorName: "莉莉安",
     authorAvatar: "../public/images/Forum/莉莉安.svg",
@@ -104,12 +118,15 @@ const articles = [
         filledIcon: "../public/images/Forum/solar_ghost-outline.svg",
         count: 102, 
         altText: "like" },
-      { icon: "../public/images/Forum/mynaui_message.svg", count: 85, altText: "message" },
-      { icon: "../public/images/Forum/Forum_label.svg", count: 67, altText: "label" }
+      { icon: "../public/images/Forum/mynaui_message.svg", count: 0, altText: "message" },
+      { icon: "../public/images/Forum/Forum_label.svg", 
+        filledIcon: "../public/images/Forum/MapCollect.png",
+        count: 67, altText: "label" }
     ]
   },
   {
     id:7,
+    commentCount: 0,
     category: "都市傳說",
     authorName: "暗影守望者",
     authorAvatar: "../public/images/Forum/暗影守望者.svg",
@@ -121,12 +138,15 @@ const articles = [
         filledIcon: "../public/images/Forum/solar_ghost-outline.svg",
         count: 28, 
         altText: "like" },
-      { icon: "../public/images/Forum/mynaui_message.svg", count: 47, altText: "message" },
-      { icon: "../public/images/Forum/Forum_label.svg", count: 60, altText: "label" }
+      { icon: "../public/images/Forum/mynaui_message.svg", count: 0, altText: "message" },
+      { icon: "../public/images/Forum/Forum_label.svg", 
+        filledIcon: "../public/images/Forum/MapCollect.png",
+        count: 60, altText: "label" }
     ]
   },
   {
     id:8,
+    commentCount: 0,
     category: "都市傳說",
     authorName: "黑夜行者",
     authorAvatar: "../images/Forum/黑夜行者.svg",
@@ -138,12 +158,15 @@ const articles = [
         filledIcon: "../public/images/Forum/solar_ghost-outline.svg",
         count: 502, 
         altText: "like" },
-      { icon: "../public/images/Forum/mynaui_message.svg", count: 46, altText: "message" },
-      { icon: "../public/images/Forum/Forum_label.svg", count: 8, altText: "label" }
+      { icon: "../public/images/Forum/mynaui_message.svg", count: 0, altText: "message" },
+      { icon: "../public/images/Forum/Forum_label.svg", 
+        filledIcon: "../public/images/Forum/MapCollect.png",
+        count: 8, altText: "label" }
     ]
   },
   {
     id:9,
+    commentCount: 0,
     category: "都市傳說",
     authorName: "模糊獵人",
     authorAvatar: "../images/Forum/模糊獵人2.svg",
@@ -155,12 +178,15 @@ const articles = [
         filledIcon: "../public/images/Forum/solar_ghost-outline.svg",
         count: 72, 
         altText: "like" },
-      { icon: "../public/images/Forum/mynaui_message.svg", count: 5, altText: "message" },
-      { icon: "../public/images/Forum/Forum_label.svg", count: 9, altText: "label" }
+      { icon: "../public/images/Forum/mynaui_message.svg", count: 0, altText: "message" },
+      { icon: "../public/images/Forum/Forum_label.svg", 
+        filledIcon: "../public/images/Forum/MapCollect.png",
+        count: 9, altText: "label" }
     ]
   },
   {
     id:10,
+    commentCount: 0,
     category: "都市傳說",
     authorName: "模糊獵人",
     authorAvatar: "../images/Forum/模糊獵人3.svg",
@@ -172,8 +198,10 @@ const articles = [
         filledIcon: "../public/images/Forum/solar_ghost-outline.svg",
         count: 18, 
         altText: "like" },
-      { icon: "../public/images/Forum/mynaui_message.svg", count: 15, altText: "message" },
-      { icon: "../public/images/Forum/Forum_label.svg", count: 600, altText: "label" }
+      { icon: "../public/images/Forum/mynaui_message.svg", count: 0, altText: "message" },
+      { icon: "../public/images/Forum/Forum_label.svg", 
+        filledIcon: "../public/images/Forum/MapCollect.png",
+        count: 10, altText: "label" }
     ]
   },
 

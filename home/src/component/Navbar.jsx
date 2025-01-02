@@ -109,7 +109,7 @@ function Navbar() {
           {isLoggedIn && (
             <div className="group-info">
               <button onClick={() => setIsAuthOpen(true)} className="auth-btn">
-                會員頁面()
+                會員頁面(待更新)
               </button>
             </div>
           )}
@@ -141,7 +141,7 @@ function Navbar() {
                 <Link to="/Forum">靈異論壇</Link>
               </li>
               <li>
-                <Link to="/Contact">聯絡我們</Link>
+                <Link to="/Contact">解謎之門</Link>
               </li>
             </ul>
           </nav>
