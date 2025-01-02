@@ -93,7 +93,7 @@ const Contact = () => {
                     <summary>
                       {/* 問題 */}
                       {item.question}
-                      <img src="../images/Contact/arrow2.svg" alt="下拉符號" />
+                      <img src="images/Contact/arrow2.svg" alt="下拉符號" />
                     </summary>
                     {/* 答案 */}
                     <p>{item.answer}</p>
@@ -109,7 +109,7 @@ const Contact = () => {
             <div className="contact-content">
               <div className="contact-right">
                 <div className="contact-bubble">
-                  <img src="../images/Contact/Union.svg" alt="人物圖片" />
+                  <img src="images/Contact/Union.svg" alt="人物圖片" />
                   <div className="bubble-text">
                     <p>
                       <strong>E-mail:</strong> mystiocmarkers@google.com
@@ -124,7 +124,7 @@ const Contact = () => {
                 </div>
                 <img
                   className="person-image"
-                  src="../images/Contact/Frame71.png"
+                  src="images/Contact/Frame71.png"
                   alt="人物圖片"
                 />
               </div>
@@ -164,7 +164,7 @@ const Contact = () => {
               </ul>
               <small>&copy; 2024 Mystic Markers. All Rights Reserved.</small>
             </div>
-            <img src="/images/LOGO_footer.svg" alt="神秘座標" />
+            <img src="images/LOGO_footer.svg" alt="神秘座標" />
           </div>
         </footer>
         </main>

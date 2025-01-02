@@ -141,7 +141,7 @@ const Forum = () => {
                             >
                               <div>
                                 <img
-                                  src={`../images/Forum/${category.icon}.svg`}
+                                  src={`images/Forum/${category.icon}.svg`}
                                   alt={category.label}
                                 />
                                 <p>{category.label}</p>
@@ -157,7 +157,7 @@ const Forum = () => {
                       >
                         <img
                           className="ad-text"
-                          src="../public/images/Forum/HORRO.svg"
+                          src="images/Forum/HORRO.svg"
                           alt="廣告"
                         />
                       </div>
@@ -188,7 +188,7 @@ const Forum = () => {
                         ].map((item, index) => (
                           <div key={index} className="nav-button-container">
                             <img
-                              src={`../public/images/Forum/${item.icon}.svg`}
+                              src={`images/Forum/${item.icon}.svg`}
                               alt={item.label}
                               className="nav-button-icon"
                             />
@@ -219,7 +219,7 @@ const Forum = () => {
                               onClick={handleSearchButtonClick}
                             >
                               <img
-                                src="../public/images/Forum/iconamoon_search.svg"
+                                src="images/Forum/iconamoon_search.svg"
                                 alt="搜尋"
                               />
                             </button>
@@ -229,7 +229,7 @@ const Forum = () => {
                         {/* 發表文章按鈕 */}
                         <div className="PostModal-bar">
                           <img
-                            src="../../images/Forum/jam_write.png"
+                            src="images/Forum/jam_write.png"
                             alt="撰寫文章"
                             style={{ cursor: "pointer", width: "50px" }}
                             onClick={() => setModalOpen(true)}

@@ -17,7 +17,7 @@ const ArticleView = () => {
     "好奇寶寶",
     "探險家",
   ];
-  const defaultAvatar = "../public/images/Forum/Message avatar.jpg"; // 預設頭像
+  const defaultAvatar = "images/Forum/Message avatar.jpg"; // 預設頭像
   const [isFavorite, setIsFavorite] = useState(false); // 初始化 isFavorite
 
   useEffect(() => {
@@ -241,7 +241,7 @@ const ArticleView = () => {
           }}
         >
           <img
-            src="../public/images/Forum/ic_outline-share.png"
+            src="images/Forum/ic_outline-share.png"
             alt="分享"
             className="share-icon"
           />
@@ -272,8 +272,8 @@ const ArticleView = () => {
                   <img
                     src={
                       comment.isLiked
-                        ? "../public/images/Forum/solar_ghost-outline.svg"
-                        : "../public/images/Forum/Forum_ghost.svg"
+                        ? "images/Forum/solar_ghost-outline.svg"
+                        : "images/Forum/Forum_ghost.svg"
                     }
                     alt="like"
                   />
